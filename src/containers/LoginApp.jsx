@@ -3,7 +3,11 @@ import LoginForm from '../components/LoginForm';
 
 class LoginApp extends Component {
   render() {
-    return <LoginForm />;
+    return (
+      <LoginForm />
+    );
   }
 }
+console.log(Component);
+
 export default LoginApp;
