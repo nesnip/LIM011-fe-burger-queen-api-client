@@ -1,0 +1,55 @@
+form{
+    background-image: url(https://images.unsplash.com/photo-1457460866886-40ef8d4b42a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+  .txt-form{
+    display: block;
+    margin-top: 15px;
+    padding: 0 5px;
+    width: 77%;
+    height: 40px;
+    border: 1px solid #d3dce6;
+    border-radius: 5px;
+  }
+  .txt-form[type="email"] {
+    background-image: url(../assets/images/correo.svg);
+    background-repeat: no-repeat;
+    background-size: 5%;
+    background-position: center right;
+    background-position-x: 95%;
+  }
+  
+  .txt-form[type="password"] {
+    background-image: url(../assets/images/candado.svg);
+    background-repeat: no-repeat;
+    background-size: 5%;
+    background-position: center right;
+    background-position-x: 95%;
+  }
+  .container-form {
+    align-content: center;
+    background-color: #FCFFFD;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-form{
+    margin-top: 15px;
+    width: 80%;
+    height: 40px;
+    border: none;
+    font-size: 22px;
+    font-weight: 500;
+    color: #ffffff;
+    border-radius: 5px;
+    background: #52cad8;
+    cursor: pointer;
+  }
