@@ -19,7 +19,7 @@ const LoginForm = ({
 
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
-  password: PropTypes.bool.isRequired,
+  password: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   getValue: PropTypes.func.isRequired,
   getPassword: PropTypes.func.isRequired,
