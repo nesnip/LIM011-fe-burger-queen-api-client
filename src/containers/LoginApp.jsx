@@ -1,13 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import LoginForm from '../components/LoginForm';
 
-class LoginApp extends Component {
-  render() {
-    return (
-      <LoginForm />
-    );
+const LoginApp = () => {
+  async function fetchData() {
+    const res = await fetch('http://localhost:3001/auth', {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify({ email: '', password: '' }), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    res
+      .json()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
-}
-console.log(Component);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = (evt) => {
+    console.log(`Hola: ${email}`);
+    console.log(`Contraseña: ${password}`);
+    evt.preventDefault();
+    fetchData();
+  };
+  const getValue = (e) => {
+    setEmail(e.target.value);
+    e.preventDefault();
+  };
+  const getPassword = (e) => {
+    setPassword(e.target.value);
+    e.preventDefault();
+  };
+
+  return (
+    <LoginForm
+      email={email}
+      password={password}
+      handleSubmit={handleSubmit}
+      getValue={getValue}
+      getPassword={getPassword}
+    />
+  );
+};
 
 export default LoginApp;
