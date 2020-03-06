@@ -1,10 +1,9 @@
 import React from 'react';
 import './LoginForm.css';
 
-const LoginForm = (props) => {
-  const {
-    email, password, handleSubmit, getValue, getPassword,
-  } = props;
+const LoginForm = ({
+  email, password, handleSubmit, getValue, getPassword,
+}) => {
 
   return (
     <div className="container-form">
@@ -19,5 +18,6 @@ const LoginForm = (props) => {
     </div>
   );
 };
+
 
 export default LoginForm;
