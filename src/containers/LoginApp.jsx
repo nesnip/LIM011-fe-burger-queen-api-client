@@ -1,40 +1,32 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../components/LoginForm/LoginForm';
+import token from './token';
+// import postOrder from './AddOrder';
 
 const LoginApp = () => {
   const history = useHistory();
-  async function fetchData() {
-    const res = await fetch('http://localhost:3001/auth', {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify({ email: '', password: '' }), // data can be `string` or {object}!
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    res
-      .json()
-      .then((res) => {
-        history.push('/home');
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (evt) => {
-    console.log(`Hola: ${email}`);
-    console.log(`Contraseña: ${password}`);
-    evt.preventDefault();
-    fetchData();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      alert('Ingresa Email y Contraseña');
+    } else {
+      // postOrder().then((res) => console.log(res));
+      token().then((res) => {
+        history.push('/Home');
+        console.log(res);
+      });
+    }
   };
-  const getValue = (e) => {
+  const handleEmail = (e) => {
     setEmail(e.target.value);
-    e.preventDefault();
   };
-  const getPassword = (e) => {
+  const handlePassword = (e) => {
     setPassword(e.target.value);
-    e.preventDefault();
   };
 
   return (
@@ -42,8 +34,8 @@ const LoginApp = () => {
       email={email}
       password={password}
       handleSubmit={handleSubmit}
-      getValue={getValue}
-      getPassword={getPassword}
+      handleEmail={handleEmail}
+      handlePassword={handlePassword}
     />
   );
 };
