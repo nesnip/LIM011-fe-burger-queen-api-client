@@ -8,8 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <>
-        <Route path="/LoginApp" component={LoginApp} />
-        <Route path="/MenuApp" component={MenuApp} />
+        <Route path="/HomeApp" component={MenuApp} />
+        <Route exact path="/" component={LoginApp} />
       </>
     </BrowserRouter>
   );
