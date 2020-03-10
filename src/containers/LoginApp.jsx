@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import LoginForm from '../components/LoginForm';
+import { useHistory } from 'react-router-dom';
+import LoginForm from '../components/LoginForm/LoginForm';
 
 const LoginApp = () => {
+  const history = useHistory();
   async function fetchData() {
     const res = await fetch('http://localhost:3001/auth', {
       method: 'POST', // or 'PUT'
@@ -12,7 +14,10 @@ const LoginApp = () => {
     });
     res
       .json()
-      .then((res) => console.log(res))
+      .then((res) => {
+        history.push('/home');
+        console.log(res);
+      })
       .catch((err) => console.log(err));
   }
   const [email, setEmail] = useState('');
