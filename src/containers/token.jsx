@@ -10,6 +10,7 @@ const token = (email, password) => fetch('http://localhost:3002/auth', {
     console.log(res);
     return Promise.reject(console.log('ingrese email y contraseña'));
   }
+  return '';
 });
 
 export default token;

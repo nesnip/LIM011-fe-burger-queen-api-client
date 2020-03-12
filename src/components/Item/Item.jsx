@@ -8,17 +8,17 @@ const Item = () => {
     console.log(res);
   });
   return (
-    <div className="card border-danger mb-3">
+    <div className="card">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1024px-A_small_cup_of_coffee.JPG"
         alt="imagen"
         className="item-photo"
       />
-      <div className="card-body text-danger">
-        <span>Cafe</span>
+      <div className="card-text">
+        <h4>Cafe Americano</h4>
+        <p>Precio: S./ 5.00</p>
+        Cantidad
         <img src={plus} alt="plus" className="plus" />
-        <span />
-        <p className="card-text">Precio</p>
       </div>
     </div>
   );
