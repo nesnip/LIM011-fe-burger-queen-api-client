@@ -1,4 +1,4 @@
-const products = (userId, client, product) => fetch('http://localhost:3002/products', {
+const getProducts = () => fetch('http://localhost:3003/products', {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
@@ -16,4 +16,4 @@ const products = (userId, client, product) => fetch('http://localhost:3002/produ
   }
   return Promise.reject(console.log('no existe autentificación'));
 });
-export default products;
+export default getProducts;

@@ -1,27 +1,29 @@
 import React from 'react';
 import './Item.css';
-import products from '../../containers/products';
+// import products from '../../containers/products';
 import plus from '../../assets/images/plus.svg';
+import less from '../../assets/images/less.svg';
 
-const Item = () => {
-  products().then((res) => {
-    console.log(res);
-  });
-  return (
-    <div className="card">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1024px-A_small_cup_of_coffee.JPG"
-        alt="imagen"
-        className="item-photo"
-      />
-      <div className="card-text">
-        <h4>Cafe Americano</h4>
-        <p>Precio: S./ 5.00</p>
-        Cantidad
-        <img src={plus} alt="plus" className="plus" />
-      </div>
+const Item = ({ data }) => data.map((res) => (
+  <div className="card">
+    <img
+      src={res.image}
+      alt="imagen"
+      className="item-photo"
+    />
+    <div className="card-text">
+      <span>{res.name}</span>
+      <span className="card-text">
+        S/.
+        {res.price}
+      </span>
     </div>
-  );
-};
-
+    <div className="btn-container">
+      <img src={less} alt="less" className="btn-plus-less" />
+      <input type="text" placeholder="0" className="quantity" />
+      <img src={plus} alt="plus" className="btn-plus-less" />
+    </div>
+    <span />
+  </div>
+));
 export default Item;

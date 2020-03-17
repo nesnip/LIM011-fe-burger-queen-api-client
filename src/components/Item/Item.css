@@ -18,4 +18,22 @@
   .container {
     padding: 2px 16px;
   }
-  
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-plus-less {
+    width: 15px;
+    cursor: pointer;
+}
+
+.card-text {
+    display: flex;
+    justify-content: space-around;
+}
+
+.quantity {
+    width: 10%;
+}
