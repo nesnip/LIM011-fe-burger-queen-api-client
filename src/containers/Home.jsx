@@ -14,7 +14,10 @@ const Home = () => {
     });
   };
   const [dataProducts, setDataProducts] = useState([]);
-  getProducts().then((res) => setDataProducts(res));
+  const [filtro, setFiltro] = useState('desayuno');
+  getProducts().then((res) => (filtro !== ''
+    ? setDataProducts(res.filter((element) => element.type === filtro))
+    : setDataProducts(res)));
   return (
     <>
       <Menu
