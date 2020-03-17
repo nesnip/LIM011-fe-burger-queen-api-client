@@ -1,14 +1,13 @@
-const postOrder = (userId, client, products) => fetch('http://localhost:3002/orders', {
-  method: 'POST',
+const getProducts = () => fetch('http://localhost:3003/products', {
+  method: 'GET',
   headers: {
     'Content-Type': 'application/json',
-    Accept: 'application/json',
   },
-  body: {
+  /*  body: {
     userId,
     client,
-    products,
-  },
+    product,
+  }, */
 }).then((res) => {
   if (res.status === 200) {
     return res.json();
@@ -17,4 +16,4 @@ const postOrder = (userId, client, products) => fetch('http://localhost:3002/ord
   }
   return Promise.reject(console.log('no existe autentificación'));
 });
-export default postOrder;
+export default getProducts;

@@ -18,7 +18,8 @@ const LoginApp = () => {
       // postOrder().then((res) => console.log(res));
       token().then((res) => {
         history.push('/Home');
-        console.log(res);
+        localStorage.setItem('token', res.token);
+        console.log(`este es el token: ${localStorage.getItem('token')}`);
       });
     }
   };
@@ -28,7 +29,6 @@ const LoginApp = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
   return (
     <LoginForm
       email={email}
