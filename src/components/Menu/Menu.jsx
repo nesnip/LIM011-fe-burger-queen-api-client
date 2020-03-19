@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 const Menu = ({ handleClick }) => (
   <ul>
     {/* <li><a className="active" href="#home">Burger Queen</a></li> */}
-    <li><a href="#news" onClick={handleClick}>Desayuno</a></li>
-    <li><a href="#contact">Almuerzo</a></li>
-    <li><a href="#about">Bebidas</a></li>
+    <li><a href="#news" id="desayuno" onClick={() => handleClick('desayuno')}>Desayuno</a></li>
+    <li><a href="#contact" id="almuerzo" onClick={() => handleClick('almuerzo')}>Almuerzo</a></li>
+    <li><a href="#about" id="bebida" onClick={() => handleClick('bebida')}>Bebidas</a></li>
   </ul>
 );
 

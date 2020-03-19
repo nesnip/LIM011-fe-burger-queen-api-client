@@ -16,6 +16,7 @@ const Item = ({ data }) => data.map((res) => (
       <span className="card-text">
         S/.
         {res.price}
+        {res.type}
       </span>
     </div>
     <div className="btn-container">

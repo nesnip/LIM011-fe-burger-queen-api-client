@@ -4,17 +4,18 @@ import Item from '../components/Item/Item';
 import getProducts from './products';
 
 const Home = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    getProducts().then((res) => {
-      // const nombres = res.products.map((el) => el.name);
-      res.products.forEach((el) => {
-        console.log(el.name);
-      });
-    });
-  };
   const [dataProducts, setDataProducts] = useState([]);
-  getProducts().then((res) => setDataProducts(res));
+  const [filtro, setFiltro] = useState('');
+  const updateProducts = () => getProducts().then((res) => (filtro !== ''
+    ? setDataProducts(res.filter((element) => element.type === filtro))
+    : setDataProducts(res)));
+
+  const handleClick = (tipo) => {
+    setFiltro(tipo);
+    updateProducts();
+  };
+
+  updateProducts();
   return (
     <>
       <Menu
