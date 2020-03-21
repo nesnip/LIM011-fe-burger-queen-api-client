@@ -1,4 +1,4 @@
-const token = (email, password) => fetch('http://localhost:3002/auth', {
+const token = (email, password) => fetch('http://localhost:3003/auth', {
   method: 'POST', // or 'PUT'
   body: { email, password },
   headers: { 'Content-Type': 'application/json' },
