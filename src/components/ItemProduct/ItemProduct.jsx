@@ -1,10 +1,10 @@
 import React from 'react';
-import './Item.css';
+import './ItemProduct.css';
 // import products from '../../containers/products';
 import plus from '../../assets/images/plus.svg';
 import less from '../../assets/images/less.svg';
 
-const Item = ({ data }) => data.map((res) => (
+const ItemProduct = ({ data }) => data.map((res) => (
   <div className="card">
     <img
       src={res.image}
@@ -27,4 +27,4 @@ const Item = ({ data }) => data.map((res) => (
     <span />
   </div>
 ));
-export default Item;
+export default ItemProduct;
