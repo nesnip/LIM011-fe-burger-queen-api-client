@@ -1,9 +1,13 @@
 .container-order {
-    align-content: center;
-    background-color: #FCFFFD;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width:500px;
+  background-color:black;
+  margin:10px;
+  padding:10px;
+  float: right;
+  }
+  .order-body{
+    background-color:rgb(255, 255, 255);
+    overflow: hidden;
+    margin:10px;
+    padding:10px;
   }
