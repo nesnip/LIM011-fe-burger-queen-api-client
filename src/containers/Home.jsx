@@ -7,7 +7,7 @@ import Orders from '../components/Orders/Orders';
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [filtro, setFiltro] = useState('');
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const updateProducts = () => getProducts().then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
@@ -16,20 +16,35 @@ const Home = () => {
     setFiltro(tipo);
     updateProducts();
   };
-
-  const handleAddQuantity = () => {
+  const handleAddQuantity = (id) => {
     setQuantity(quantity + 1);
+    console.log(quantity);
+    console.log(dataProducts);
+
+    console.log(id);
   };
 
   updateProducts();
   return (
-    <>
+    <div>
       <Menu
         handleClick={handleClick}
       />
-      <ItemProduct data={dataProducts} />
-      <Orders addQuantity={handleAddQuantity} />
-    </>
+      <Orders />
+      <div className="container-card">
+        {dataProducts.map((objProducts) => (
+          <ItemProduct
+            name={objProducts.name}
+            price={objProducts.price}
+            image={objProducts.image}
+            type={objProducts.type}
+            quantity={quantity}
+            id={objProducts.id}
+            addQuantity={handleAddQuantity}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
