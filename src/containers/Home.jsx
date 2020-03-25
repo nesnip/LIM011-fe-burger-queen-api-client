@@ -7,7 +7,7 @@ import Orders from '../components/Orders/Orders';
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [filtro, setFiltro] = useState('');
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const updateProducts = () => getProducts().then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
@@ -16,13 +16,12 @@ const Home = () => {
     setFiltro(tipo);
     updateProducts();
   };
-  const handleAddQuantity = (id) => {
-    setQuantity(quantity + 1);
-    console.log(quantity);
-    console.log(dataProducts);
-
+  /* const handleAddQuantity = (id, quant, o) => {
+    quant += 1;
+    console.log(quant);
+    console.log(o);
     console.log(id);
-  };
+  }; */
 
   updateProducts();
   return (
@@ -34,13 +33,12 @@ const Home = () => {
       <div className="container-card">
         {dataProducts.map((objProducts) => (
           <ItemProduct
+            obj={objProducts}
             name={objProducts.name}
             price={objProducts.price}
             image={objProducts.image}
             type={objProducts.type}
-            quantity={quantity}
             id={objProducts.id}
-            addQuantity={handleAddQuantity}
           />
         ))}
       </div>
