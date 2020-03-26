@@ -3,7 +3,7 @@ import './ItemProduct.css';
 // import products from '../../containers/products';
 
 const ItemProduct = ({
-  name, price, image, id, obj,
+  name, price, image, id, obj, addOrder,
 }) => {
   const [quantity, setQuantity] = useState(0);
   return (
@@ -12,6 +12,7 @@ const ItemProduct = ({
         src={image}
         alt="imagen"
         className="item-photo"
+        onClick={() => addOrder(id)}
       />
       <div className="card-text">
         <span className="card-name">{name}</span>
