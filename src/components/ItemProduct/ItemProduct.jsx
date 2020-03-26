@@ -12,7 +12,7 @@ const ItemProduct = ({
         src={image}
         alt="imagen"
         className="item-photo"
-        onClick={() => addOrder(id)}
+        onClick={() => addOrder(id, quantity)}
       />
       <div className="card-text">
         <span className="card-name">{name}</span>

@@ -8,15 +8,32 @@ const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
   const [filtro, setFiltro] = useState('');
-  // const [quantity, setQuantity] = useState(1);
+
   const updateProducts = () => getProducts().then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
 
-  const handleAddOrder = (idProduct) => {
-    const producto = dataProducts.filter((element) => element.id === idProduct);
-    setDataOrder(producto);
+  const handleAddOrder = (idProduct, cantidad) => {
+    // const producto = dataProducts.filter((element) => element.id === idProduct);
+    dataProducts.forEach((element) => {
+      if (element.id === idProduct) {
+        const indice = dataOrder.findIndex((value) => idProduct === value.id);
+        const tempDataOrder = dataOrder;
+        if (indice >= 0) {
+          tempDataOrder[indice].cantidad += cantidad;
+          setDataOrder(tempDataOrder);
+        } else {
+          const temp = element;
+          temp.cantidad = cantidad;
+          tempDataOrder.push(temp);
+          setDataOrder(tempDataOrder);
+        }
+      }
+      return [];
+    });
     console.log(dataOrder);
+    // setDataOrder(producto);
+    // console.log(dataOrder);
   };
 
   const handleClick = (tipo) => {
@@ -30,14 +47,9 @@ const Home = () => {
       <Menu
         handleClick={handleClick}
       />
-      {dataOrder.map((objOrder) => (
-        <Orders
-          name={objOrder.name}
-          price={objOrder.price}
-          quantity={objOrder.quantity}
-          id={objOrder.id}
-        />
-      ))}
+      <Orders
+        dataOrder={dataOrder}
+      />
       <div className="container-card">
         {dataProducts.map((objProducts) => (
           <ItemProduct
