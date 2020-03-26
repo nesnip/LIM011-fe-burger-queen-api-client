@@ -1,9 +1,9 @@
 import React from 'react';
 import './Orders.css';
-// import ItemOrder from '../ItemOrder/ItemOrder';
+import ItemOrder from '../ItemOrder/ItemOrder';
 
 const Orders = ({
-  name, price, quantity, id,
+  dataOrder,
 }) => (
   <div className="container-order">
     <div className="order-body">
@@ -23,18 +23,14 @@ const Orders = ({
           </tr>
         </thead>
         <tbody>
-          <tr>
-
-            <td>{name}</td>
-
-            <td>{quantity}</td>
-
-            <td>
-              S./
-              {price}
-            </td>
-
-          </tr>
+          {dataOrder.map((objOrder) => (
+            <ItemOrder
+              name={objOrder.name}
+              price={objOrder.price}
+              quantity={objOrder.cantidad}
+              id={objOrder.id}
+            />
+          ))}
         </tbody>
       </table>
       <button className="btn-enviar" id="btn-enviar" type="submit">
