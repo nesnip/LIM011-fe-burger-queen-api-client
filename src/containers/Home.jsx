@@ -6,22 +6,22 @@ import Orders from '../components/Orders/Orders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
+  const [dataOrder, setDataOrder] = useState([]);
   const [filtro, setFiltro] = useState('');
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const updateProducts = () => getProducts().then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
 
+  const handleAddOrder = (idProduct) => {
+    const producto = dataProducts.filter((element) => element.id === idProduct);
+    setDataOrder(producto);
+    console.log(dataOrder);
+  };
+
   const handleClick = (tipo) => {
     setFiltro(tipo);
     updateProducts();
-  };
-  const handleAddQuantity = (id) => {
-    setQuantity(quantity + 1);
-    console.log(quantity);
-    console.log(dataProducts);
-
-    console.log(id);
   };
 
   updateProducts();
@@ -30,17 +30,24 @@ const Home = () => {
       <Menu
         handleClick={handleClick}
       />
-      <Orders />
+      {dataOrder.map((objOrder) => (
+        <Orders
+          name={objOrder.name}
+          price={objOrder.price}
+          quantity={objOrder.quantity}
+          id={objOrder.id}
+        />
+      ))}
       <div className="container-card">
         {dataProducts.map((objProducts) => (
           <ItemProduct
+            obj={objProducts}
             name={objProducts.name}
             price={objProducts.price}
             image={objProducts.image}
             type={objProducts.type}
-            quantity={quantity}
             id={objProducts.id}
-            addQuantity={handleAddQuantity}
+            addOrder={handleAddOrder}
           />
         ))}
       </div>
