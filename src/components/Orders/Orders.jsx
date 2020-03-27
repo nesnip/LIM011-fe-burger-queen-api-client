@@ -25,6 +25,7 @@ const Orders = ({
         <tbody>
           {dataOrder.map((objOrder) => (
             <ItemOrder
+              key={objOrder.id}
               name={objOrder.name}
               price={objOrder.price}
               quantity={objOrder.cantidad}
