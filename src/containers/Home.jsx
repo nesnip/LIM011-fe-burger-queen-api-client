@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Menu from '../components/Menu/Menu';
+import Header from '../components/Header/Header';
 import ItemProduct from '../components/ItemProduct/ItemProduct';
 import getProducts from './products';
 import Orders from '../components/Orders/Orders';
@@ -40,15 +41,23 @@ const Home = () => {
     setFiltro(tipo);
     updateProducts();
   };
-
+  const deleteProduct = (id) => {
+    for (let i = 0; i < dataOrder.length; i++) {
+      if (dataOrder[i].id === id) {
+        dataOrder.splice(i, 1);
+      }
+    }
+  };
   updateProducts();
   return (
     <div>
+      <Header> </Header>
       <Menu
         handleClick={handleClick}
       />
       <Orders
         dataOrder={dataOrder}
+        deleteProduct={deleteProduct}
       />
       <div className="container-card">
         {dataProducts.map((objProducts) => (
