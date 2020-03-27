@@ -32,7 +32,6 @@ const Home = () => {
       }
       return [];
     });
-    console.log(dataOrder);
     // setDataOrder(producto);
     // console.log(dataOrder);
   };

@@ -33,9 +33,6 @@ const ItemProduct = ({
           className="btn btn-dark"
           onClick={() => {
             setQuantity(quantity + 1);
-            console.log(quantity);
-            console.log(obj);
-            console.log(id);
           }}
         >
           +
