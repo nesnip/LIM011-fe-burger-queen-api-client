@@ -45,6 +45,8 @@
 
 .card-name {
     font-size: 15px;
+    font-weight: bold;
+    margin-right: 9px;
 }
 
 .quantity {

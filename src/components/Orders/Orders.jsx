@@ -3,7 +3,7 @@ import './Orders.css';
 import ItemOrder from '../ItemOrder/ItemOrder';
 
 const Orders = ({
-  dataOrder,
+  dataOrder, deleteProduct,
 }) => (
   <div className="container-order">
     <div className="order-body">
@@ -20,6 +20,7 @@ const Orders = ({
 
             <th>Precio</th>
 
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -29,10 +30,12 @@ const Orders = ({
               price={objOrder.price}
               quantity={objOrder.cantidad}
               id={objOrder.id}
+              deleteProduct={deleteProduct}
             />
           ))}
         </tbody>
       </table>
+      <h5> Total </h5>
       <button className="btn-enviar" id="btn-enviar" type="submit">
         Enviar a Cocina
       </button>
