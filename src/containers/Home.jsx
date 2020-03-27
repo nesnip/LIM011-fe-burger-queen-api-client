@@ -53,6 +53,7 @@ const Home = () => {
       <div className="container-card">
         {dataProducts.map((objProducts) => (
           <ItemProduct
+            key={objProducts.id}
             obj={objProducts}
             name={objProducts.name}
             price={objProducts.price}
