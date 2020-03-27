@@ -6,7 +6,7 @@ const ItemOrder = ({ name, quantity, price, id }) => (
     <td>{name}</td>
     <td>{quantity}</td>
     <td>
-      S./
+      S/.
       {price * quantity}
     </td>
   </tr>
