@@ -7,12 +7,15 @@ const ItemProduct = ({
 }) => {
   const [quantity, setQuantity] = useState(0);
   return (
-    <div className="card" key={id}>
+    <div className="card">
       <img
         src={image}
         alt="imagen"
         className="item-photo"
-        onClick={() => addOrder(id, quantity)}
+        onClick={() => {
+          addOrder(id, quantity);
+          setQuantity(0);
+        }}
       />
       <div className="card-text">
         <span className="card-name">{name}</span>
