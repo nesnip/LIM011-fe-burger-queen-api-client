@@ -1,6 +1,6 @@
-const token = (email, password) => fetch('http://localhost:3002/auth', {
+const token = (email, password) => fetch('http://138.68.51.45/auth', {
   method: 'POST', // or 'PUT'
-  body: { email, password },
+  body: JSON.stringify({ email, password }),
   headers: { 'Content-Type': 'application/json' },
 }).then((res) => {
   if (res.status === 200) {

@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
 import ItemProduct from '../components/ItemProduct/ItemProduct';
 import getProducts from './products';
 import Orders from '../components/Orders/Orders';
+import OrderKitchen from '../components/OrderKitchen/OrderKitchen';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
   const [filtro, setFiltro] = useState('');
+  const [clientName, setclientName] = useState('');
 
-  const updateProducts = () => getProducts().then((res) => (filtro !== ''
+  const updateProducts = () => getProducts(localStorage.getItem('token')).then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
 
@@ -28,6 +30,7 @@ const Home = () => {
           temp.cantidad = cantidad;
           tempDataOrder.push(temp);
           setDataOrder(tempDataOrder);
+          updateProducts();
         }
       }
       return [];
@@ -46,8 +49,22 @@ const Home = () => {
         dataOrder.splice(i, 1);
       }
     }
+    updateProducts();
   };
-  updateProducts();
+  const sendOrder = (e) => {
+    e.preventDefault();
+    if (!clientName) {
+      alert('Ingresa nombre del cliente');
+    } else {
+      console.log(clientName);
+    }
+  };
+  const handleName = (e) => {
+    setclientName(e.target.value);
+  };
+  useEffect(() => {
+    updateProducts();
+  }, [filtro]);
   return (
     <div>
       <Header> </Header>
@@ -57,6 +74,8 @@ const Home = () => {
       <Orders
         dataOrder={dataOrder}
         deleteProduct={deleteProduct}
+        sendOrder={sendOrder}
+        handleName={handleName}
       />
       <div className="container-card">
         {dataProducts.map((objProducts) => (
@@ -72,6 +91,9 @@ const Home = () => {
           />
         ))}
       </div>
+      <OrderKitchen
+        clientName={clientName}
+      />
     </div>
   );
 };

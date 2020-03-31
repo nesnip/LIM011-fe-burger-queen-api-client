@@ -15,8 +15,8 @@ const Head = () => (
         ueen
       </p>
     </li>
-    <li><a href="#news" id="productos">Productos</a></li>
-    <li><a href="#contact" id="cocina">Cocina</a></li>
+    <li><a href="/Home" id="productos">Productos</a></li>
+    <li><a href="/OrdersKitchenv" id="cocina">Cocina</a></li>
   </ul>
 );
 export default Head;

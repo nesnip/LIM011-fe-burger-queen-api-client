@@ -3,7 +3,7 @@ import './Orders.css';
 import ItemOrder from '../ItemOrder/ItemOrder';
 
 const Orders = ({
-  dataOrder, deleteProduct,
+  dataOrder, deleteProduct, sendOrder, handleName,
 }) => {
   // const [total, setTotal] = useState(0);
   let totalPrice = 0;
@@ -14,8 +14,7 @@ const Orders = ({
     <div className="container-order">
       <div className="order-body">
         <h4>Nueva Orden</h4>
-        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente" />
-        <input type="text" className="txt-form" id="numero-mesa" placeholder="N° de mesa" />
+        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente" onChange={handleName} />
         <table className="egt">
           <thead>
             <tr>
@@ -50,7 +49,12 @@ const Orders = ({
             </tr>
           </tbody>
         </table>
-        <button className="btn-enviar" id="btn-enviar" type="submit">
+        <button
+          className="btn-enviar"
+          id="btn-enviar"
+          type="submit"
+          onClick={sendOrder}
+        >
           Enviar a Cocina
         </button>
       </div>
