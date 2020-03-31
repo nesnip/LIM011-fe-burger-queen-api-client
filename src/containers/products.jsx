@@ -1,7 +1,8 @@
-const getProducts = () => fetch('http://localhost:3003/products', {
+const getProducts = (token) => fetch('http://138.68.51.45/products', {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
   },
   /*  body: {
     userId,
