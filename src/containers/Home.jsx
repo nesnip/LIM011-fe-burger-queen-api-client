@@ -17,7 +17,6 @@ const Home = () => {
     : setDataProducts(res)));
 
   const handleAddOrder = (idProduct, cantidad) => {
-    // const producto = dataProducts.filter((element) => element.id === idProduct);
     dataProducts.forEach((element) => {
       if (element.id === idProduct) {
         const indice = dataOrder.findIndex((value) => idProduct === value.id);
@@ -35,8 +34,6 @@ const Home = () => {
       }
       return [];
     });
-    // setDataOrder(producto);
-    // console.log(dataOrder);
   };
 
   const handleClick = (tipo) => {
@@ -59,12 +56,14 @@ const Home = () => {
       console.log(clientName);
     }
   };
+
   const handleName = (e) => {
     setclientName(e.target.value);
   };
   useEffect(() => {
     updateProducts();
   }, [filtro]);
+
   return (
     <div>
       <Header> </Header>
