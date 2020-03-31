@@ -10,12 +10,11 @@ const Home = () => {
   const [dataOrder, setDataOrder] = useState([]);
   const [filtro, setFiltro] = useState('');
 
-  const updateProducts = () => getProducts().then((res) => (filtro !== ''
+  const updateProducts = () => getProducts(localStorage.getItem('token')).then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
 
   const handleAddOrder = (idProduct, cantidad) => {
-    // const producto = dataProducts.filter((element) => element.id === idProduct);
     dataProducts.forEach((element) => {
       if (element.id === idProduct) {
         const indice = dataOrder.findIndex((value) => idProduct === value.id);
@@ -32,8 +31,6 @@ const Home = () => {
       }
       return [];
     });
-    // setDataOrder(producto);
-    // console.log(dataOrder);
   };
 
   const handleClick = (tipo) => {
@@ -47,7 +44,8 @@ const Home = () => {
       }
     }
   };
-  updateProducts();
+
+  // updateProducts();
   return (
     <div>
       <Header> </Header>
