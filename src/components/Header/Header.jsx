@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import burger from '../../assets/images/burger.png';
 
-const Head = () => (
+const Head = ({ viewAllOrder }) => (
   <ul className="nav-header">
     <li>
 
@@ -16,7 +16,7 @@ const Head = () => (
       </p>
     </li>
     <li><a href="/Home" id="productos">Productos</a></li>
-    <li><a href="/OrdersKitchenv" id="cocina">Cocina</a></li>
+    <li><a href="/OrdersKitchenv" id="cocina" onClick={() => viewAllOrder()}> Cocina</a></li>
   </ul>
 );
 export default Head;

@@ -6,17 +6,18 @@ import getProducts from './products';
 import Orders from '../components/Orders/Orders';
 import OrderKitchen from '../components/OrderKitchen/OrderKitchen';
 import AddOrders from '../components/Orders/AddOrders';
+import GetOrders from '../components/Orders/GetOrders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
+  const [AlldataOrder, setAllDataOrder] = useState([]);
   const [filtro, setFiltro] = useState('');
   const [client, setClient] = useState('');
 
   const updateProducts = () => getProducts(localStorage.getItem('token')).then((res) => (filtro !== ''
     ? setDataProducts(res.filter((element) => element.type === filtro))
     : setDataProducts(res)));
-  console.log(dataProducts);
   const handleAddOrder = (_id, qty) => {
     // const producto = dataProducts.filter((element) => element.id === idProduct);
     dataProducts.forEach((element) => {
@@ -41,7 +42,9 @@ const Home = () => {
     // setDataOrder(producto);
     // console.log(dataOrder);
   };
-
+  const viewAllOrder = () => {
+    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
+  };
   const handleClick = (tipo) => {
     setFiltro(tipo);
     updateProducts();
@@ -63,7 +66,7 @@ const Home = () => {
     AddOrders(token,
       _id,
       client,
-      dataOrder.map((elem) => ({ productId: elem._id, qty: elem.qty })))
+      dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
       .then((res) => console.log(res));
   };
   const handleName = (e) => {
@@ -72,11 +75,15 @@ const Home = () => {
   useEffect(() => {
     updateProducts();
   }, [filtro]);
+  console.log(AlldataOrder);
   return (
     <div>
-      <Header> </Header>
+      <Header
+        viewAllOrder={viewAllOrder}
+      />
       <Menu
         handleClick={handleClick}
+        viewAllOrder={viewAllOrder}
       />
       <Orders
         dataOrder={dataOrder}
@@ -98,10 +105,16 @@ const Home = () => {
           />
         ))}
       </div>
-      <OrderKitchen
-        client={client}
-        dataOrder={dataOrder}
-      />
+      {AlldataOrder.map((objOrder) => (
+        <OrderKitchen
+          client={objOrder.client}
+          _id={objOrder._id}
+          qty={objOrder.products[0].qty}
+          dateEntry={objOrder.dateEntry}
+          status={objOrder.status}
+         // name={objOrder.products[0].product.name}
+        />
+      ))}
     </div>
   );
 };
