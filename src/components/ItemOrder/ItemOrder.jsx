@@ -3,14 +3,14 @@ import './ItemOrder.css';
 import trash from '../../assets/images/garbage.svg';
 
 const ItemOrder = ({
-  name, quantity, price, id, deleteProduct,
+  name, qty, price, id, deleteProduct,
 }) => (
   <tr>
     <td>{name}</td>
-    <td>{quantity}</td>
+    <td>{qty}</td>
     <td>
       S/.
-      {price * quantity}
+      {price * qty}
     </td>
     <td>
       <span id="btn-deleted"><img id="trash" src={trash} alt="Eliminar"  onClick={() => deleteProduct(id)} /></span>

@@ -1,9 +1,10 @@
 import React from 'react';
+import './OrderKitchen.css';
 
 const OrderKitchen = ({
-  clientName,
+  client, _id, qty, name, dateEntry, status,
 }) => (
-  <div className="container-order">
+  <div className="container-order-kitchen" key={_id}>
     <div className="order-body">
       <h4> ORDEN N°</h4>
       <table className="egt">
@@ -13,32 +14,39 @@ const OrderKitchen = ({
             <th>Cliente</th>
 
             <td>
-              {clientName}
+              {client}
             </td>
 
           </tr>
           <tr>
 
             <th>Productos</th>
-
-            <td />
+            <th>Cantidad</th>
 
           </tr>
+          <td>
+            nombre del producto
+          </td>
+          <td>
+            {qty}
+          </td>
           <tr>
 
             <th>Estado</th>
 
             <td>
               <select id="estado">
-                <option value="january" rel="icon-temperature">pendiente</option>
-                <option value="february">cancelado</option>
-                <option value="march">deliverado</option>
+                <option value={status} rel="icon-temperature">{status}</option>
+                <option value="cancelado">cancelado</option>
+                <option value="deliverado">deliverado</option>
               </select>
             </td>
 
           </tr>
           <th>Fecha de creación</th>
-          <td />
+          <td>
+            {dateEntry}
+          </td>
         </thead>
         <tbody />
       </table>

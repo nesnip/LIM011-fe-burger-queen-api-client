@@ -1,10 +1,10 @@
-const Addorders = (token, userId, client, products) => fetch('http://localhost:3003/orders', {
+const Addorders = (token, userId, client, products) => fetch('http://138.68.51.45/orders', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   },
-  body: { userId, client, products },
+  body: JSON.stringify({ userId, client, products }),
 }).then((res) => {
   if (res.status === 200) {
     return res.json();
