@@ -1,32 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu/Menu';
-import Item from '../components/Item/Item';
-import products from './products';
+import Header from '../components/Header/Header';
+import Orders from '../components/Orders/Orders';
+import getProducts from './products';
 
 const Home = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    products().then((res) => {
-      // const nombres = res.products.map((el) => el.name);
-      res.products.forEach((el) => {
-        console.log(el.name);
-      });
-    });
+  const [dataProducts, setDataProducts] = useState([]);
+  const [dataOrder, setDataOrder] = useState([]);
+  const [category, setCategory] = useState('');
+  const token = localStorage.getItem('token');
+
+  const updateProducts = () => getProducts(token).then((res) => (category !== ''
+    ? setDataProducts(res.filter((obj) => obj.type === category))
+    : setDataProducts(res)));
+
+  useEffect(() => {
+    updateProducts();
+  }, [category]);
+
+  const handleClick = (type) => {
+    setCategory(type);
   };
-  const dataProduct = products().then((res) => {
-    res.products.forEach((el) => {
-      console.log(el.name);
-    });
-  });
+
+  const addOrder = (child) => {
+    setDataOrder(child);
+  };
+
+  const deleteProduct = (idProduct) => {
+    const i = dataOrder.findIndex((obj) => obj.id === idProduct);
+    const tempDataOrder = dataOrder;
+    if (i >= 0) {
+      tempDataOrder.splice(i, 1);
+    }
+    setDataOrder(tempDataOrder);
+    console.log(dataOrder);
+    console.log(tempDataOrder);
+  };
+
   return (
-    <>
+    <div>
+      <Header />
       <Menu
         handleClick={handleClick}
+        dataProducts={dataProducts}
+        addOrder={addOrder}
       />
-      <Item
-        dataProduct={dataProduct}
+      <Orders
+        dataOrder={dataOrder}
+        setDataOrder={setDataOrder}
+        deleteProduct={deleteProduct}
       />
-    </>
+    </div>
   );
 };
 
