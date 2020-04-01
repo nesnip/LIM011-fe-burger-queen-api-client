@@ -20,6 +20,7 @@ const Home = () => {
     : setDataProducts(res)));
   const handleAddOrder = (_id, qty) => {
     // const producto = dataProducts.filter((element) => element.id === idProduct);
+
     dataProducts.forEach((element) => {
       if (element._id === _id) {
         const indice = dataOrder.findIndex((value) => _id === value._id);
@@ -39,8 +40,6 @@ const Home = () => {
       console.log(element._id);
       return [];
     });
-    // setDataOrder(producto);
-    // console.log(dataOrder);
   };
   const viewAllOrder = () => {
     GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
@@ -69,6 +68,7 @@ const Home = () => {
       dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
       .then((res) => console.log(res));
   };
+
   const handleName = (e) => {
     setClient(e.target.value);
   };
@@ -76,6 +76,7 @@ const Home = () => {
     updateProducts();
   }, [filtro]);
   console.log(AlldataOrder);
+
   return (
     <div>
       <Header
