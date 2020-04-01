@@ -8,7 +8,7 @@ const Orders = ({
   // const [total, setTotal] = useState(0);
   let totalPrice = 0;
   dataOrder.forEach((el) => {
-    totalPrice += el.price * el.cantidad;
+    totalPrice += el.price * el.qty;
   });
   return (
     <div className="container-order">
@@ -34,8 +34,8 @@ const Orders = ({
                 key={objOrder.id}
                 name={objOrder.name}
                 price={objOrder.price}
-                quantity={objOrder.cantidad}
-                id={objOrder.id}
+                qty={objOrder.qty}
+                _id={objOrder._id}
                 deleteProduct={deleteProduct}
               />
             ))}

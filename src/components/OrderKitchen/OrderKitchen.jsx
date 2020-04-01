@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OrderKitchen = ({
-  clientName,
+  client
 }) => (
   <div className="container-order">
     <div className="order-body">
@@ -13,7 +13,7 @@ const OrderKitchen = ({
             <th>Cliente</th>
 
             <td>
-              {clientName}
+              {client}
             </td>
 
           </tr>
