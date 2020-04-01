@@ -1,4 +1,4 @@
-const getProducts = (token) => fetch('http://138.68.51.45/products', {
+const getProducts = (token) => fetch('http://138.68.51.45/products?limit=13', {
   // http://localhost:3003/products
 // http://138.68.51.45/products
   method: 'GET',
