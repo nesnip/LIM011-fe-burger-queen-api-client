@@ -3,13 +3,13 @@ import './Menu.css';
 import PropTypes from 'prop-types';
 import ItemProduct from '../ItemProduct/ItemProduct';
 
-const Menu = ({ handleClick, dataProducts, addOrder }) => {
+const Menu = ({
+  handleClick, dataProducts, addOrder, viewAllOrder,
+}) => {
   const [dataPreOrder, setDataPreOrder] = useState([]);
-  const addArrOrder = (child) => {
-    const arrOrder = dataPreOrder.concat(child);
-    const uniqueArr = [...new Set(arrOrder)];
-    setDataPreOrder([...new Set(arrOrder)]);
-    console.log(uniqueArr);
+  const addArrOrder = (obj) => {
+    const orders = dataPreOrder.concat(obj);
+    setDataPreOrder([...new Set(orders)]);
   };
   useEffect(() => {
     addOrder(dataPreOrder);
@@ -22,11 +22,12 @@ const Menu = ({ handleClick, dataProducts, addOrder }) => {
         <li><a href="#lunch" id="almuerzo" onClick={() => handleClick('almuerzo')}>Almuerzo</a></li>
         <li><a href="#complements" id="complementos" onClick={() => handleClick('complementos')}>Complementos</a></li>
         <li><a href="#drinks" id="bebida" onClick={() => handleClick('bebida')}>Bebidas</a></li>
+        <li><a href="#about" id="bebida" onClick={() => viewAllOrder()}>Ordenes</a></li>
       </ul>
       <div className="container-card">
         {dataProducts.map((objProduct) => (
           <ItemProduct
-            key={objProduct.id}
+            key={objProduct._id}
             objProduct={objProduct}
             addArrOrder={addArrOrder}
           />
