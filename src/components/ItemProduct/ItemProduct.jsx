@@ -5,10 +5,10 @@ const ItemProduct = ({ objProduct, addArrOrder }) => {
   const [quantity, setQuantity] = useState(0);
   const addProduct = () => {
     const newObjProduct = objProduct;
-    if (newObjProduct.count > 0) {
-      newObjProduct.count += quantity;
+    if (newObjProduct.qty > 0) {
+      newObjProduct.qty += quantity;
     } else {
-      newObjProduct.count = quantity;
+      newObjProduct.qty = quantity;
     }
     addArrOrder([newObjProduct]);
   };
