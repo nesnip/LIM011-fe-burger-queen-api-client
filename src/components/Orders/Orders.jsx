@@ -1,19 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Orders.css';
 import PropTypes from 'prop-types';
 import ItemOrder from '../ItemOrder/ItemOrder';
 
-const Orders = ({ dataOrder, deleteProduct }) => {
+const Orders = ({
+  dataOrder, deleteProduct, sendOrder, handleName,
+}) => {
+  const [newOrders, setNewOrders] = useState([]);
   let totalPrice = 0;
   dataOrder.forEach((el) => {
-    totalPrice += el.price * el.count;
+    totalPrice += el.price * el.qty;
   });
+
+  const deleteItem = (productName) => {
+    const i = dataOrder.findIndex((obj) => obj.name === productName);
+    const tempDataOrder = dataOrder;
+    tempDataOrder[i].qty = 0;
+    tempDataOrder.splice(i, 1);
+    setNewOrders(tempDataOrder);
+  };
+
+  useEffect(() => {
+    deleteProduct(newOrders);
+  }, [newOrders]);
 
   return (
     <div className="container-order">
       <div className="order-body">
         <h4>Nueva Orden</h4>
-        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente"/*  onChange={handleName} */ />
+        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente" onChange={handleName} />
         <table className="egt">
           <thead>
             <tr>
@@ -31,8 +46,11 @@ const Orders = ({ dataOrder, deleteProduct }) => {
             {dataOrder.map((objOrder) => (
               <ItemOrder
                 key={objOrder.id}
-                objOrder={objOrder}
-                deleteProduct={deleteProduct}
+                name={objOrder.name}
+                price={objOrder.price}
+                qty={objOrder.qty}
+                _id={objOrder._id}
+                deleteItem={deleteItem}
               />
             ))}
             <tr>
@@ -49,7 +67,7 @@ const Orders = ({ dataOrder, deleteProduct }) => {
           className="btn-enviar"
           id="btn-enviar"
           type="submit"
-          /* onClick={sendOrder} */
+          onClick={sendOrder}
         >
           Enviar a Cocina
         </button>
