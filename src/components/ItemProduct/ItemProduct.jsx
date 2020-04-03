@@ -55,5 +55,4 @@ const ItemProduct = ({ objProduct, addArrOrder }) => {
     </div>
   );
 };
-
 export default ItemProduct;

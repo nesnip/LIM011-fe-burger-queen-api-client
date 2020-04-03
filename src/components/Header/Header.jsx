@@ -16,7 +16,7 @@ const Head = () => (
       </p>
     </li>
     <li><a href="/Home" id="productos">Productos</a></li>
-    <li><a href="/OrdersKitchenv" id="cocina">Cocina</a></li>
+    <li><a href="/OrdersKitchen" id="cocina">Cocina</a></li>
   </ul>
 );
 export default Head;

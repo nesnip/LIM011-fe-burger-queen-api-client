@@ -30,7 +30,6 @@ const LoginApp = () => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
   return (
     <LoginForm
       email={email}
