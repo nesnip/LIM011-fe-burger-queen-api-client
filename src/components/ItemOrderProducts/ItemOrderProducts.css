@@ -1,0 +1,5 @@
+.row-product {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}

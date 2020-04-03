@@ -75,11 +75,9 @@ const Home = () => {
       />
       {AlldataOrder.map((objOrder) => (
         <OrderKitchen
-          client={objOrder.client}
-          _id={objOrder._id}
-          qty={objOrder.products[0].qty}
-          dateEntry={objOrder.dateEntry}
-          status={objOrder.status}
+          AllDataOrder={AlldataOrder}
+          ArrayProduct={objOrder.products}
+          objOrder={objOrder}
          // name={objOrder.products[0].product.name}
         />
       ))}
