@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Orders.css';
+import PropTypes from 'prop-types';
 import ItemOrder from '../ItemOrder/ItemOrder';
 
 const Orders = ({
   dataOrder, deleteProduct, sendOrder, handleName,
 }) => {
-  // const [total, setTotal] = useState(0);
+  const [newOrders, setNewOrders] = useState([]);
   let totalPrice = 0;
   dataOrder.forEach((el) => {
     totalPrice += el.price * el.qty;
   });
+
+  const deleteItem = (productName) => {
+    const i = dataOrder.findIndex((obj) => obj.name === productName);
+    const tempDataOrder = dataOrder;
+    tempDataOrder[i].qty = 0;
+    tempDataOrder.splice(i, 1);
+    setNewOrders(tempDataOrder);
+  };
+
+  useEffect(() => {
+    deleteProduct(newOrders);
+  }, [newOrders]);
+
   return (
     <div className="container-order">
       <div className="order-body">
@@ -36,7 +50,7 @@ const Orders = ({
                 price={objOrder.price}
                 qty={objOrder.qty}
                 _id={objOrder._id}
-                deleteProduct={deleteProduct}
+                deleteItem={deleteItem}
               />
             ))}
             <tr>
@@ -61,4 +75,9 @@ const Orders = ({
     </div>
   );
 };
+
+Orders.propTypes = {
+  dataOrder: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default Orders;

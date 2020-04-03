@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
-import ItemProduct from '../components/ItemProduct/ItemProduct';
-import Orders from '../components/Orders/Orders';
 import OrderKitchen from '../components/OrderKitchen/OrderKitchen';
 
 const OrderKitchenv = () => {
@@ -17,7 +14,7 @@ const OrderKitchenv = () => {
   };
   return (
     <div>
-      <Header> </Header>
+      <Header />
       <OrderKitchen
         clientName={clientName}
       />
