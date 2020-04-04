@@ -18,7 +18,7 @@
     float: left;
   }
   
- .nav-header li a {
+ .nav-header .li-header {
     display: block;
     color: rgb(248, 244, 244);
     text-align: center;
@@ -26,10 +26,10 @@
     padding: 28px 20px;
   }
   
-  .nav-header li a:hover {
+  .nav-header .li-header:hover {
     background-color: rgb(58, 56, 56);
   }
-  a:link, a:visited, a:active {
+  .li-header:link, .li-header:visited, .li-header:active {
     text-decoration:none;
 }
 
