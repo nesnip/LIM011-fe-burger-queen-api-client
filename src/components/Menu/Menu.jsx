@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ItemProduct from '../ItemProduct/ItemProduct';
 
 const Menu = ({
-  handleClick, dataProducts, addOrder, viewAllOrder,
+  handleClick, dataProducts, addOrder,
 }) => {
   const [dataPreOrder, setDataPreOrder] = useState([]);
   const addArrOrder = (obj) => {
@@ -22,7 +22,6 @@ const Menu = ({
         <li><a href="#lunch" id="almuerzo" onClick={() => handleClick('almuerzo')}>Almuerzo</a></li>
         <li><a href="#complements" id="complementos" onClick={() => handleClick('complementos')}>Complementos</a></li>
         <li><a href="#drinks" id="bebida" onClick={() => handleClick('bebida')}>Bebidas</a></li>
-        <li><a href="#about" id="bebida" onClick={() => viewAllOrder()}>Ordenes</a></li>
       </ul>
       <div className="container-card">
         {dataProducts.map((objProduct) => (
