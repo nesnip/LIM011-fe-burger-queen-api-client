@@ -1,8 +1,9 @@
 import React from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom';
 import burger from '../../assets/images/burger.png';
 
-const Head = () => (
+const Header = () => (
   <ul className="nav-header">
     <li>
 
@@ -15,8 +16,12 @@ const Head = () => (
         ueen
       </p>
     </li>
-    <li><a href="/Home" id="productos">Productos</a></li>
-    <li><a href="/OrdersKitchen" id="cocina">Cocina</a></li>
+    <Link to="/Home">
+      <li className="li-header" id="productos">Productos</li>
+    </Link>
+    <Link to="/OrdersKitchen">
+      <li className="li-header" id="cocina">Cocina </li>
+    </Link>
   </ul>
 );
-export default Head;
+export default Header;

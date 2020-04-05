@@ -28,7 +28,13 @@ const ItemOrderProducts = ({
       </tr>
       <tr>
         <th>Estado</th>
-        <td>{status}</td>
+        <td>
+          <select id="status">
+            <option value={status}>{status}</option>
+            <option value="canceled">canceled</option>
+            <option value="delivered">delivered</option>
+          </select>
+        </td>
       </tr>
       <tr>
         <th>Fecha de creación</th>

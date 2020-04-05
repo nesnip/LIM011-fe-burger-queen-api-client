@@ -3,15 +3,13 @@ import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
 import getProducts from './products';
-import OrderKitchen from '../components/OrderKitchen/OrderKitchen';
 import AddOrders from '../components/Orders/AddOrders';
-import GetOrders from '../components/Orders/GetOrders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
   const [category, setCategory] = useState('');
-  const [AlldataOrder, setAllDataOrder] = useState([]);
+  // const [AlldataOrder, setAllDataOrder] = useState([]);
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
@@ -51,9 +49,9 @@ const Home = () => {
     updateProducts();
   };
 
-  const viewAllOrder = () => {
-    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
-  };
+  // const viewAllOrder = () => {
+  //   GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
+  // };
 
   const sendOrder = () => {
     const _id = '01';
@@ -70,18 +68,14 @@ const Home = () => {
   const handleName = (e) => {
     setClient(e.target.value);
   };
-  console.log(AlldataOrder);
 
   return (
     <>
-      <Header
-        viewAllOrder={viewAllOrder}
-      />
+      <Header />
       <Menu
         handleClick={handleClick}
         dataProducts={dataProducts}
         addProduct={addProduct}
-        viewAllOrder={viewAllOrder}
       />
       <Orders
         dataOrder={dataOrder}
@@ -89,14 +83,6 @@ const Home = () => {
         sendOrder={sendOrder}
         handleName={handleName}
       />
-      {AlldataOrder.map((objOrder) => (
-        <OrderKitchen
-          AllDataOrder={AlldataOrder}
-          ArrayProduct={objOrder.products}
-          objOrder={objOrder}
-         // name={objOrder.products[0].product.name}
-        />
-      ))}
     </>
   );
 };
