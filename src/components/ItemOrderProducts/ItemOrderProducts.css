@@ -1,5 +1,9 @@
 .row-product {
-    height: 70px;
+    height: 35px;
     display: flex;
     align-items: center;
+}
+.select{
+    display: flex;
+    justify-content: center;
 }

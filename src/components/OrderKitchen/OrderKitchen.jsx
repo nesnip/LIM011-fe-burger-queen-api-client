@@ -21,23 +21,27 @@ const OrderKitchen = () => {
     <>
       <Header />
 
+      <section className="kitchen-view">
+        {AlldataOrder.map((objOrder) => (
+          <div className="container-order-kitchen" key={objOrder._id}>
+            <div className="order-body-kitchen">
+              <p> Órden</p>
+              <ItemOrderProducts
+                _id={objOrder._id}
+                userId={objOrder.userId}
+                AllDataOrder={AlldataOrder}
+                ArrayProduct={objOrder.products}
+                objOrder={objOrder}
+                client={objOrder.client}
+                dateEntry={objOrder.dateEntry}
+                status={objOrder.status}
+                dateProcessed={objOrder.dateProcessed}
+              />
 
-      {AlldataOrder.map((objOrder) => (
-        <div className="container-order-kitchen">
-          <div className="order-body">
-            <h4> ORDEN N°</h4>
-            <ItemOrderProducts
-              AllDataOrder={AlldataOrder}
-              ArrayProduct={objOrder.products}
-              objOrder={objOrder}
-              client={objOrder.client}
-              dateEntry={objOrder.dateEntry}
-              status={objOrder.status}
-            />
-
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </section>
     </>
   );
 };

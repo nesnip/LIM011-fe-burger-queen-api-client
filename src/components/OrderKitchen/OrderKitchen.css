@@ -1,7 +1,31 @@
 .container-order-kitchen {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0  4px 8px 0 rgba(30, 27, 27, 0.78);
     transition: 0.3s;
-    width: 25%;
-    border-radius: 5px;
     float: right;
+    display: grid;
+    width:38%;
+    border-radius: 9px;
+    margin: 1em;
+    background-color: #f7f8f8;
+    border-color: rgb(226, 87, 87);
+    border-style: ridge;
+    border-width: 3px;
+    }
+    .order-body-kitchen{
+        color: #110e04;
+        margin: 15px;
+        padding: 10px;
+        text-align: center;
+        background-color: #f7f8f8;
+        border-radius: 9px;
+    }
+    .kitchen-view{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #f3f3f3;
+    }
+    p{
+        font-family:'Thundergood', cursive;
+        font-size: 30px;
     }

@@ -3,9 +3,7 @@ import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
 import getProducts from './products';
-import OrderKitchen from '../components/OrderKitchen/OrderKitchen';
 import AddOrders from '../components/Orders/AddOrders';
-import GetOrders from '../components/Orders/GetOrders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
@@ -48,7 +46,7 @@ const Home = () => {
       _id,
       client,
       dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
-      .then((res) => console.log(res));
+      .then(() => setClient([]), setDataOrder([]));
   };
 
   const handleName = (e) => {
