@@ -22,6 +22,9 @@ const Header = () => (
     <Link to="/OrdersKitchen">
       <li className="li-header" id="cocina">Cocina </li>
     </Link>
+    <Link to="/OrdersKitchen">
+      <li className="li-header" id="mesero">Mesero </li>
+    </Link>
   </ul>
 );
 export default Header;

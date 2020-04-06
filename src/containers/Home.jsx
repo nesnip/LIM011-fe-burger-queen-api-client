@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
-import getProducts from './products';
-import AddOrders from '../components/Orders/AddOrders';
+import getProducts from '../controller/products';
+import AddOrders from '../controller/Orders/AddOrders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
   const [category, setCategory] = useState('');
-  // const [AlldataOrder, setAllDataOrder] = useState([]);
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
-  const updateProducts = () => getProducts(token).then((res) => (category !== ''
-    ? setDataProducts(res.filter((obj) => obj.type === category))
+  const updateProducts = () => getProducts(token).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
     : setDataProducts(res)));
 
   useEffect(() => {
@@ -49,22 +47,18 @@ const Home = () => {
     updateProducts();
   };
 
-  // const viewAllOrder = () => {
-  //   GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
-  // };
-
   const sendOrder = () => {
-    const _id = '01';
+    const userId = '01';
     if (!client) {
       alert('Ingrese nombre del cliente');
+    } else {
+      AddOrders(token,
+        userId,
+        client,
+        dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
+        .then(() => setClient(''), setDataOrder([]));
     }
-    AddOrders(token,
-      _id,
-      client,
-      dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
-      .then((res) => console.log(res));
   };
-
   const handleName = (e) => {
     setClient(e.target.value);
   };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoginForm from '../components/LoginForm/LoginForm';
-import token from './token';
+import token from '../controller/token';
 // import postOrder from './AddOrder';
 
 const LoginApp = () => {
