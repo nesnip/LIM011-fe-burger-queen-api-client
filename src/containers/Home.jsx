@@ -12,8 +12,7 @@ const Home = () => {
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
-  const updateProducts = () => getProducts(token).then((res) => (category !== ''
-    ? setDataProducts(res.filter((obj) => obj.type === category))
+  const updateProducts = () => getProducts(token).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
     : setDataProducts(res)));
 
   useEffect(() => {
@@ -36,14 +35,14 @@ const Home = () => {
     const userId = '01';
     if (!client) {
       alert('Ingrese nombre del cliente');
+    } else {
+      AddOrders(token,
+        userId,
+        client,
+        dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
+        .then(() => setClient(''), setDataOrder([]));
     }
-    AddOrders(token,
-      userId,
-      client,
-      dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
-      .then(() => setClient(''), setDataOrder([]));
   };
-
   const handleName = (e) => {
     setClient(e.target.value);
   };

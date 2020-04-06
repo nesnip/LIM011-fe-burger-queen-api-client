@@ -7,16 +7,21 @@ import Header from '../Header/Header';
 
 const OrderKitchen = () => {
   const [AlldataOrder, setAllDataOrder] = useState([]);
+  // const [status, setStatus] = useState('');
   const viewAllOrder = () => {
-    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders.filter((obj) => obj.status === 'pending')));
+    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders));
   };
   useEffect(() => {
     viewAllOrder();
   }, []);
+
+  // const handleClickStatus = (strStatus) => {
+  //   setStatus(strStatus);
+  // };
+
   return (
     <>
       <Header />
-
       <section className="kitchen-view">
         {AlldataOrder.map((objOrder) => (
           <div className="container-order-kitchen" key={objOrder._id}>
