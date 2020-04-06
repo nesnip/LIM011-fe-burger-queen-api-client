@@ -5,7 +5,7 @@ import './ItemProduct.css';
 const ItemProduct = ({ id, image, name, price, addProduct }) => {
   const [quantity, setQuantity] = useState(0);
   return (
-    <div className="card">
+    <div className="card" data-testid="itemProduct">
       <img
         src={image}
         alt="imagen"
