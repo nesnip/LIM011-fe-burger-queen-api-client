@@ -23,12 +23,28 @@ const Home = () => {
     setCategory(type);
   };
 
-  const addOrder = (uniqueArray) => {
-    setDataOrder(uniqueArray);
+  const addProduct = (count, idProduct) => {
+    const arr = dataOrder;
+    const index = dataOrder.findIndex((objProduct) => objProduct._id === idProduct);
+    if (index >= 0) {
+      arr[index].qty += count;
+      setDataOrder(arr);
+    } else {
+      const tempProduct = dataProducts.find((obj) => obj._id === idProduct);
+      tempProduct.qty = count;
+      arr.push(tempProduct);
+      setDataOrder(arr);
+    }
+    updateProducts();
   };
 
-  const deleteProduct = (newOrders) => {
-    setDataOrder(newOrders);
+  const deleteProduct = (idProduct) => {
+    const arr = dataOrder;
+    const index = dataOrder.findIndex((obj) => obj._id === idProduct);
+    arr.splice(index, 1);
+    setDataOrder(arr);
+    console.log(arr);
+    updateProducts();
   };
 
   const sendOrder = () => {
@@ -53,7 +69,7 @@ const Home = () => {
       <Menu
         handleClick={handleClick}
         dataProducts={dataProducts}
-        addOrder={addOrder}
+        addProduct={addProduct}
       />
       <Orders
         dataOrder={dataOrder}

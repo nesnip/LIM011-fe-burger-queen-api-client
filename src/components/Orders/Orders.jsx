@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Orders.css';
 import PropTypes from 'prop-types';
 import ItemOrder from '../ItemOrder/ItemOrder';
@@ -6,23 +6,10 @@ import ItemOrder from '../ItemOrder/ItemOrder';
 const Orders = ({
   dataOrder, deleteProduct, sendOrder, handleName,
 }) => {
-  const [newOrders, setNewOrders] = useState([]);
   let totalPrice = 0;
   dataOrder.forEach((el) => {
     totalPrice += el.price * el.qty;
   });
-
-  const deleteItem = (productName) => {
-    const i = dataOrder.findIndex((obj) => obj.name === productName);
-    const tempDataOrder = dataOrder;
-    tempDataOrder[i].qty = 0;
-    tempDataOrder.splice(i, 1);
-    setNewOrders(tempDataOrder);
-  };
-
-  useEffect(() => {
-    deleteProduct(newOrders);
-  }, [newOrders]);
 
   return (
     <div className="container-order">
@@ -32,34 +19,31 @@ const Orders = ({
         <table className="egt">
           <thead>
             <tr>
-
               <th>Producto</th>
-
               <th>Cantidad</th>
-
               <th>Precio</th>
-
               <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
             {dataOrder.map((objOrder) => (
               <ItemOrder
-                key={objOrder.id}
+                key={objOrder._id}
                 name={objOrder.name}
                 price={objOrder.price}
                 qty={objOrder.qty}
                 _id={objOrder._id}
-                deleteItem={deleteItem}
+                deleteProduct={deleteProduct}
               />
             ))}
             <tr>
               <th>Total</th>
-              <th />
+              <th>{' '}</th>
               <th>
                 S/.
                 {totalPrice}
               </th>
+              <th>{' '}</th>
             </tr>
           </tbody>
         </table>
@@ -78,6 +62,9 @@ const Orders = ({
 
 Orders.propTypes = {
   dataOrder: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  sendOrder: PropTypes.func.isRequired,
+  handleName: PropTypes.func.isRequired,
 };
 
 export default Orders;

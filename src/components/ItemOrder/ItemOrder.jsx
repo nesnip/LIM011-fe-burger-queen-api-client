@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import trash from '../../assets/images/garbage.svg';
 
 const ItemOrder = ({
-  name, qty, price, id, deleteItem,
+  name, qty, price, _id, deleteProduct,
 }) => (
   <tr>
     <td>{name}</td>
@@ -14,14 +14,17 @@ const ItemOrder = ({
       {price * qty}
     </td>
     <td>
-      <span id="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteItem(name)} /></span>
+      <span id="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>
     </td>
   </tr>
 );
 
 ItemOrder.propTypes = {
-  objOrder: PropTypes.shape({}).isRequired,
-  deleteItem: PropTypes.func.isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  qty: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  _id: PropTypes.string.isRequired,
 };
 
 export default ItemOrder;

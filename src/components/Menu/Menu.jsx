@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Menu.css';
 import PropTypes from 'prop-types';
 import ItemProduct from '../ItemProduct/ItemProduct';
 
 const Menu = ({
-  handleClick, dataProducts, addOrder,
+  handleClick, dataProducts, addProduct,
 }) => {
-  const [dataPreOrder, setDataPreOrder] = useState([]);
-  const addArrOrder = (obj) => {
-    const orders = dataPreOrder.concat(obj);
-    setDataPreOrder([...new Set(orders)]);
-  };
-  useEffect(() => {
-    addOrder(dataPreOrder);
-  }, [dataPreOrder]);
-
   return (
     <>
       <ul>
@@ -27,8 +18,12 @@ const Menu = ({
         {dataProducts.map((objProduct) => (
           <ItemProduct
             key={objProduct._id}
+            id={objProduct._id}
+            image={objProduct.image}
+            name={objProduct.name}
+            price={objProduct.price}
             objProduct={objProduct}
-            addArrOrder={addArrOrder}
+            addProduct={addProduct}
           />
         ))}
       </div>
@@ -38,7 +33,7 @@ const Menu = ({
 Menu.propTypes = {
   handleClick: PropTypes.func.isRequired,
   dataProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addOrder: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
 };
 
 export default Menu;

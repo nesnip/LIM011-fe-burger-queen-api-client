@@ -1,34 +1,21 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './ItemProduct.css';
 
-const ItemProduct = ({ objProduct, addArrOrder }) => {
+const ItemProduct = ({ id, image, name, price, addProduct }) => {
   const [quantity, setQuantity] = useState(0);
-  const addProduct = () => {
-    const newObjProduct = objProduct;
-    if (newObjProduct.qty > 0) {
-      newObjProduct.qty += quantity;
-    } else {
-      newObjProduct.qty = quantity;
-    }
-    addArrOrder([newObjProduct]);
-  };
-
   return (
     <div className="card">
       <img
-        src={objProduct.image}
+        src={image}
         alt="imagen"
         className="item-photo"
-        onClick={() => {
-          addProduct();
-          setQuantity(0);
-        }}
       />
       <div className="card-text">
-        <span className="card-name">{objProduct.name}</span>
+        <span className="card-name">{name}</span>
         <span className="card-text">
           S/.
-          {objProduct.price}
+          {price}
         </span>
       </div>
       <div className="btn-group btn-container" role="group" aria-label="Basic example">
@@ -36,12 +23,16 @@ const ItemProduct = ({ objProduct, addArrOrder }) => {
           type="button"
           className="btn btn-dark"
           onClick={() => {
-            setQuantity(quantity - 1);
+            if (quantity > 0) {
+              setQuantity(quantity - 1);
+            } else {
+              setQuantity(0);
+            }
           }}
         >
           -
         </button>
-        <input type="text" placeholder="0" className="quantity btn btn-dark" value={quantity} min="0" />
+        <input type="text" className="quantity btn btn-dark" value={quantity} onChange={() => {}} />
         <button
           type="button"
           className="btn btn-dark"
@@ -52,7 +43,27 @@ const ItemProduct = ({ objProduct, addArrOrder }) => {
           +
         </button>
       </div>
+      <button
+        type="button"
+        className="btn btn-dark"
+        disabled={quantity <= 0}
+        onClick={() => {
+          addProduct(quantity, id);
+          setQuantity(0);
+        }}
+      >
+        Agregar
+      </button>
     </div>
   );
 };
+
+ItemProduct.propTypes = {
+  id: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  addProduct: PropTypes.func.isRequired,
+};
+
 export default ItemProduct;
