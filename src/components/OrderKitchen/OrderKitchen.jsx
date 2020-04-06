@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './OrderKitchen.css';
 import ItemOrderProducts from '../ItemOrderProducts/ItemOrderProducts';
-import GetOrders from '../Orders/GetOrders';
+import GetOrders from '../../controller/Orders/GetOrders';
 import Header from '../Header/Header';
 // import EditOrder from '../Orders/EditOrder';
 

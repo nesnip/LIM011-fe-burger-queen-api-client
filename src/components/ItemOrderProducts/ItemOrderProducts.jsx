@@ -1,7 +1,7 @@
 import React from 'react';
 import './ItemOrderProducts.css';
 import PropTypes from 'prop-types';
-import EditOrder from '../Orders/EditOrder';
+import EditOrder from '../../controller/Orders/EditOrder';
 
 const ItemOrderProducts = ({
   client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId,

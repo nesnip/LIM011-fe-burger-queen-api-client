@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Menu from '../components/Menu/Menu';
 import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
-import getProducts from './products';
-import AddOrders from '../components/Orders/AddOrders';
+import getProducts from '../controller/products';
+import AddOrders from '../controller/Orders/AddOrders';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
