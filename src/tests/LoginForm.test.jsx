@@ -5,7 +5,9 @@ import LoginForm from '../components/LoginForm/LoginForm';
 describe('LoginForm', () => {
   it('Debería llamar a la función handleSubmit al dar click al boton', () => {
     const handleSubmit = jest.fn();
-    const container = render(<LoginForm handleSubmit={handleSubmit} />);
+    const handleEmail = jest.fn();
+    const handlePassword = jest.fn();
+    const container = render(<LoginForm handleSubmit={handleSubmit} handleEmail={handleEmail} handlePassword={handlePassword} email="" />);
     const button = container.getByText('Iniciar sesión');
     const inputEmail = container.getByPlaceholderText('Ingrese E-mail');
     const inputPassword = container.getByPlaceholderText('Ingrese Contraseña');
@@ -16,7 +18,6 @@ describe('LoginForm', () => {
     act(() => {
       fireEvent.submit(button);
     });
-
     expect(handleSubmit).toHaveBeenCalled();
   });
 });

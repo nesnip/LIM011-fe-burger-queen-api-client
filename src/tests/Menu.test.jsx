@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, getNodeText } from '@testing-library/react';
+import { render, getNodeText, fireEvent } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import Menu from '../components/Menu/Menu';
 
 describe('Menu', () => {
@@ -22,9 +23,23 @@ describe('Menu', () => {
         dateEntry: '2020-04-01T04:41:14.928Z',
       },
     ];
-    const container = render(<Menu dataProducts={dataProducts} />);
+    const handleClick = jest.fn();
+    const addProduct = jest.fn();
+    const container = render(<Menu
+      dataProducts={dataProducts}
+      handleClick={handleClick}
+      addProduct={addProduct}
+    />);
     const itemsList = container.getAllByTestId('itemProduct');
+    const button = container.getByText('Desayuno');
 
     expect(itemsList.length).toBe(2);
+    expect(getNodeText(itemsList[1])).toBe('Café con leche');
+
+    act(() => {
+      fireEvent.click(button);
+    });
+
+    expect(handleClick).toHaveBeenCalled();
   });
 });

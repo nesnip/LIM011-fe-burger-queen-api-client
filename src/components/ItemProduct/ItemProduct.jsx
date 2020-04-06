@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ItemProduct.css';
 
-const ItemProduct = ({ id, image, name, price, addProduct }) => {
+const ItemProduct = ({
+  id, image, name, price, addProduct,
+}) => {
   const [quantity, setQuantity] = useState(0);
   return (
-    <div className="card" data-testid="itemProduct">
+    <div className="card">
       <img
         src={image}
         alt="imagen"
         className="item-photo"
       />
       <div className="card-text">
-        <span className="card-name">{name}</span>
+        <span className="card-name" data-testid="itemProduct">{name}</span>
         <span className="card-text">
           S/.
           {price}
