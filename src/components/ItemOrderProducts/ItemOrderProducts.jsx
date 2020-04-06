@@ -1,9 +1,10 @@
 import React from 'react';
 import './ItemOrderProducts.css';
+import PropTypes from 'prop-types';
 import EditOrder from '../Orders/EditOrder';
 
 const ItemOrderProducts = ({
-  client, ArrayProduct, dateEntry, status, dateProcessed, AllDataOrder, _id, userId,
+  client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId,
 }) => {
   const changeStatusOrder = (e) => {
     EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
@@ -11,8 +12,9 @@ const ItemOrderProducts = ({
   };
   return (
     <>
-      <table className="egt">
-        <thead>
+      <table className="egt" key={_id}>
+        <thead />
+        <tbody>
           <tr>
             <th>Cliente</th>
             <td>{client}</td>
@@ -24,23 +26,23 @@ const ItemOrderProducts = ({
           <tr>
             <td>
               {ArrayProduct.map((objProduct) => (
-                <tr className="row-product">{objProduct.product.name}</tr>
+                <div className="row-product" key={objProduct.product._id}>{objProduct.product.name}</div>
               ))}
             </td>
             <td>
               {ArrayProduct.map((objProduct) => (
-                <tr className="row-product">{objProduct.qty}</tr>
+                <div className="row-product" key={objProduct.product._id}>{objProduct.qty}</div>
               ))}
             </td>
           </tr>
           <tr>
             <th>Estado</th>
             <td>
-              <select id="status" onChange={changeStatusOrder}>
+              <select id="status" value={status} onChange={changeStatusOrder}>
                 <option value={status}>{status}</option>
-                <option value="delivering">delivering</option>
-                <option value="canceled">canceled</option>
-                <option value="delivered">delivered</option>
+                <option value="delivering">Entregando</option>
+                <option value="canceled">Cancelado</option>
+                <option value="delivered">Entregado</option>
 
               </select>
             </td>
@@ -53,11 +55,21 @@ const ItemOrderProducts = ({
             <th>Fecha de cambio de estado</th>
             <td>{dateProcessed}</td>
           </tr>
-        </thead>
-        <tbody />
+
+
+        </tbody>
       </table>
     </>
   );
+};
+ItemOrderProducts.propTypes = {
+  ArrayProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
+  _id: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  client: PropTypes.string.isRequired,
+  dateEntry: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  dateProcessed: PropTypes.string.isRequired,
 };
 
 export default ItemOrderProducts;

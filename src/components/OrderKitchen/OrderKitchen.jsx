@@ -8,12 +8,8 @@ import Header from '../Header/Header';
 const OrderKitchen = () => {
   const [AlldataOrder, setAllDataOrder] = useState([]);
   const viewAllOrder = () => {
-    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
+    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders.filter((obj) => obj.status === 'pending')));
   };
-  // const changeStatusOrder = () => {
-  //   EditOrder(localStorage.getItem('token'),userId,id,client,status)
-  //     .then((res) => console.log(res));
-  // };
   useEffect(() => {
     viewAllOrder();
   }, []);

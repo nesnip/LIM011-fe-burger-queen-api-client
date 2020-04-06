@@ -9,7 +9,6 @@ const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [dataOrder, setDataOrder] = useState([]);
   const [category, setCategory] = useState('');
-  // const [AlldataOrder, setAllDataOrder] = useState([]);
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
@@ -33,20 +32,16 @@ const Home = () => {
     setDataOrder(newOrders);
   };
 
-  // const viewAllOrder = () => {
-  //   GetOrders(localStorage.getItem('token')).then((NewDataOrders) => setAllDataOrder(NewDataOrders), console.log(AlldataOrder));
-  // };
-
   const sendOrder = () => {
-    const _id = '01';
+    const userId = '01';
     if (!client) {
       alert('Ingrese nombre del cliente');
     }
     AddOrders(token,
-      _id,
+      userId,
       client,
       dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
-      .then(() => setClient([]), setDataOrder([]));
+      .then(() => setClient(''), setDataOrder([]));
   };
 
   const handleName = (e) => {
