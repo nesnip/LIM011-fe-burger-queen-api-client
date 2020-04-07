@@ -20,17 +20,17 @@ form{
 .txt-form[type="email"] {
   background-image: url(../../assets/images/correo.svg);
   background-repeat: no-repeat;
-  background-size: 5%;
+  background-size: 8%;
   background-position: center right;
-  background-position-x: 97%;
+  background-position-x: 95%;
 }
 
 .txt-form[type="password"] {
   background-image: url(../../assets/images/candado.svg);
   background-repeat: no-repeat;
-  background-size: 5%;
+  background-size: 8%;
   background-position: center right;
-  background-position-x: 97%;
+  background-position-x: 95%;
 }
 .container-form {
   align-content: center;
@@ -46,7 +46,7 @@ form{
   width: 50%;
   height: 40px;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   color: #ffffff;
   border-radius: 5px;
@@ -55,7 +55,7 @@ form{
 }
 
 .logo {
-  width: 160px;
+  width: 130px;
 }
 
 @font-face {
@@ -65,11 +65,100 @@ form{
 
 .title {
   font-family: 'Thundergood', cursive;
-  font-size: 70px;
+  font-size: 37px;
   margin: 20px;
 }
 
 .initials {
   color: #ff5757;
   margin: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {...} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .txt-form[type="email"] {
+    background-size: 6%;
+    background-position-x: 97%;
+  }
+  
+  .txt-form[type="password"] {
+    background-size: 6%;
+    background-position-x: 97%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .txt-form{
+    width: 55%;
+    height: 43px;
+  }
+  .txt-form[type="email"] {
+    background-size: 5%;
+    background-position-x: 97%;
+  }
+  
+  .txt-form[type="password"] {
+    background-size: 5%;
+    background-position-x: 97%;
+  }
+
+  .btn-form{
+    width: 40%;
+    height: 43px;
+    font-size: 23px;
+  }
+
+  .logo {
+    width: 160px;
+  }
+
+  .title {
+    font-size: 70px;
+    margin: 20px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .txt-form{
+    width: 50%;
+  }
+
+  .txt-form[type="email"] {
+    background-size: 3.5%;
+    background-position-x: 97.5%;
+  }
+  
+  .txt-form[type="password"] {
+    background-size: 3.5%;
+    background-position-x: 97.5%;
+  }
+  .btn-form{
+    width: 35%;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .txt-form{
+    width: 35%;
+  }
+
+  .txt-form[type="email"] {
+    background-size: 4%;
+    background-position-x: 98%;
+  }
+  
+  .txt-form[type="password"] {
+    background-size: 4%;
+    background-position-x: 98%;
+  }
+
+  .btn-form{
+    width: 25%;
+  }
 }
