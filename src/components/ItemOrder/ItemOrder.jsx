@@ -7,8 +7,8 @@ const ItemOrder = ({
   name, qty, price, _id, deleteProduct,
 }) => (
   <tr>
-    <td>{name}</td>
-    <td>{qty}</td>
+    <td data-testid="item-name">{name}</td>
+    <td data-testid="item-qty">{qty}</td>
     <td>
       S/.
       {price * qty}
