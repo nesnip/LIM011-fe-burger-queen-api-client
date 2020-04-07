@@ -7,7 +7,7 @@ describe('LoginForm', () => {
     const handleSubmit = jest.fn();
     const handleEmail = jest.fn();
     const handlePassword = jest.fn();
-    const container = render(<LoginForm handleSubmit={handleSubmit} handleEmail={handleEmail} handlePassword={handlePassword} email="" />);
+    const container = render(<LoginForm handleSubmit={handleSubmit} handleEmail={handleEmail} handlePassword={handlePassword} email="" password="" />);
     const button = container.getByText('Iniciar sesión');
     const inputEmail = container.getByPlaceholderText('Ingrese E-mail');
     const inputPassword = container.getByPlaceholderText('Ingrese Contraseña');

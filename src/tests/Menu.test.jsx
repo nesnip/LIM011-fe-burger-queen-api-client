@@ -31,15 +31,32 @@ describe('Menu', () => {
       addProduct={addProduct}
     />);
     const itemsList = container.getAllByTestId('itemProduct');
-    const button = container.getByText('Desayuno');
+    const brkfstBtn = container.getByText('Desayuno');
+    const lunchBtn = container.getByText('Almuerzo');
+    const complBtn = container.getByText('Complementos');
+    const drinksBtn = container.getByText('Bebidas');
 
     expect(itemsList.length).toBe(2);
     expect(getNodeText(itemsList[1])).toBe('Café con leche');
 
     act(() => {
-      fireEvent.click(button);
+      fireEvent.click(brkfstBtn);
     });
+    expect(handleClick).toHaveBeenCalled();
 
+    act(() => {
+      fireEvent.click(lunchBtn);
+    });
+    expect(handleClick).toHaveBeenCalled();
+
+    act(() => {
+      fireEvent.click(complBtn);
+    });
+    expect(handleClick).toHaveBeenCalled();
+
+    act(() => {
+      fireEvent.click(drinksBtn);
+    });
     expect(handleClick).toHaveBeenCalled();
   });
 });
