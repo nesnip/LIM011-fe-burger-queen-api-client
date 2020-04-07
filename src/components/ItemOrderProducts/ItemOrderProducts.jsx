@@ -10,14 +10,14 @@ const ItemOrderProducts = ({
 }) => {
   const changeStatusOrder = (e) => {
     EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
-      .then((res) => console.log(res));
+      .then(() => viewAllOrder());
   };
   const deleteOrder = () => {
     DeleteOrder(localStorage.getItem('token'), _id).then((res) => console.log(res), viewAllOrder());
   };
   useEffect(() => {
     viewAllOrder();
-  }, [ArrayProduct]);
+  }, [status]);
   return (
     <>
       <span id="btn-deleted-trash"><img id="trash-order" src={trash} alt="Eliminar" onClick={deleteOrder} /></span>

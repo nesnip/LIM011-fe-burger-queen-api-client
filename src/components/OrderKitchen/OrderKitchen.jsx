@@ -18,6 +18,7 @@ const OrderKitchen = () => {
   useEffect(() => {
     viewAllOrder();
   }, [category]);
+
   const chooseCategory = (type) => {
     setCategory(type);
   };
