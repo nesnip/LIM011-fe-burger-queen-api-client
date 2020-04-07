@@ -29,11 +29,11 @@ li a {
 
 li a:hover:not(.active) {
   background-color: #ddd;
+  text-decoration:none;
 }
 
 li a.active {
   color: white;
-  background-color: rgb(224, 172, 28);
 }
 
 .container-card {

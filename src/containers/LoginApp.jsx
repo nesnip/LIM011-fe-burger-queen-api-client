@@ -12,10 +12,13 @@ const LoginApp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     token(email, password).then((res) => {
-      history.push('/Home');
-      localStorage.setItem('token', res.token);
-      console.log(email, password);
-      console.log(`este es el token: ${localStorage.getItem('token')}`);
+      if (res.token === undefined) {
+        console.log('Email y contraseña incorrecto');
+      } else {
+        localStorage.setItem('token', res.token);
+        console.log(`este es el token: ${localStorage.getItem('token')}`);
+        history.push('/Home');
+      }
     });
   };
 
