@@ -14,7 +14,7 @@ const ItemOrder = ({
       {price * qty}
     </td>
     <td>
-      <span id="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>
+      <span id="btn-deleted" className="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>
     </td>
   </tr>
 );

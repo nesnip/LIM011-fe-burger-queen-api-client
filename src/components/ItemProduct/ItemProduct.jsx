@@ -15,7 +15,7 @@ const ItemProduct = ({
       />
       <div className="card-text">
         <span className="card-name" data-testid="itemProduct">{name}</span>
-        <span className="card-text" data-testid="item-price">
+        <span data-testid="item-price">
           S/.
           {price}
         </span>

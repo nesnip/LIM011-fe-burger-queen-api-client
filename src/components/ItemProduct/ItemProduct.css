@@ -30,7 +30,7 @@
   }
 
 .btn-container {
-    width: 65%;
+    width: 74%;
     margin: 5px;
 }
 
@@ -40,16 +40,30 @@
 }
 
 .card-text {
+    width: 65%;
+    height: 40%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-name {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     margin-right: 9px;
 }
 
 .quantity {
     width: 10%;
+}
+
+@media only screen and (min-width: 992px) {
+    .btn-container {
+        width: 58%;
+        margin: 5px;
+    }
+
+    .card-text {
+        width: 58%;
+    }
 }
