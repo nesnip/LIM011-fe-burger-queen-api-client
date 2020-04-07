@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ItemOrderProducts.css';
 import PropTypes from 'prop-types';
 import EditOrder from '../../controller/Orders/EditOrder';
+import DeleteOrder from '../../controller/Orders/DeleteOrder';
+import trash from '../../assets/images/garbage.svg';
 
 const ItemOrderProducts = ({
   client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId,
@@ -10,8 +12,14 @@ const ItemOrderProducts = ({
     EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
       .then((res) => console.log(res));
   };
+  const deleteOrder = () => {
+    DeleteOrder(localStorage.getItem('token'), _id).then((res) => console.log(res));
+  };
   return (
     <>
+      <span id="btn-deleted-trash"><img id="trash-order" src={trash} alt="Eliminar" onClick={deleteOrder} /></span>
+
+      <p> Órden</p>
       <table className="egt" key={_id}>
         <thead />
         <tbody>

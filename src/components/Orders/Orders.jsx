@@ -10,7 +10,7 @@ const Orders = ({
   dataOrder.forEach((el) => {
     totalPrice += el.price * el.qty;
   });
-
+console.log(dataOrder);
   return (
     <div className="container-order">
       <div className="order-body">

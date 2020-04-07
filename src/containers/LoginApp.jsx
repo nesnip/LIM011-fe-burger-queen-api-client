@@ -11,19 +11,14 @@ const LoginApp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      alert('Ingresa Email y Contraseña');
-    } else {
-      // postOrder().then((res) => console.log(res));
-      token(email, password).then((res) => {
-        history.push('/Home');
-        localStorage.setItem('token', res.token);
-        console.log(email, password);
-        console.log(`este es el token: ${localStorage.getItem('token')}`);
-      });
-    }
+    token(email, password).then((res) => {
+      history.push('/Home');
+      localStorage.setItem('token', res.token);
+      console.log(email, password);
+      console.log(`este es el token: ${localStorage.getItem('token')}`);
+    });
   };
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };

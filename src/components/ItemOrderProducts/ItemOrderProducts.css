@@ -7,3 +7,9 @@
     display: flex;
     justify-content: center;
 }
+#trash-order{
+    width: 25px;
+  }
+  #btn-deleted-trash{
+    float: right;
+  }

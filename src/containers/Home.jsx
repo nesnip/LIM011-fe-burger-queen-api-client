@@ -14,7 +14,6 @@ const Home = () => {
 
   const updateProducts = () => getProducts(token).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
     : setDataProducts(res)));
-
   useEffect(() => {
     updateProducts();
   }, [category]);
@@ -35,6 +34,7 @@ const Home = () => {
       arr.push(tempProduct);
       setDataOrder(arr);
     }
+    console.log(arr);
     updateProducts();
   };
 
@@ -62,6 +62,7 @@ const Home = () => {
   const handleName = (e) => {
     setClient(e.target.value);
   };
+
 
   return (
     <>
