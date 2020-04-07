@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Orders.css';
 import PropTypes from 'prop-types';
 import ItemOrder from '../ItemOrder/ItemOrder';
@@ -10,7 +10,6 @@ const Orders = ({
   dataOrder.forEach((el) => {
     totalPrice += el.price * el.qty;
   });
-console.log(dataOrder);
   return (
     <div className="container-order">
       <div className="order-body">
