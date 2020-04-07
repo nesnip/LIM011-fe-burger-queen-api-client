@@ -15,7 +15,7 @@ const ItemProduct = ({
       />
       <div className="card-text">
         <span className="card-name" data-testid="itemProduct">{name}</span>
-        <span className="card-text">
+        <span data-testid="item-price">
           S/.
           {price}
         </span>
@@ -34,7 +34,7 @@ const ItemProduct = ({
         >
           -
         </button>
-        <input type="text" className="quantity btn btn-dark" value={quantity} onChange={() => {}} />
+        <input data-testid="item-count" className="quantity btn btn-dark" value={quantity} onChange={() => {}} />
         <button
           type="button"
           className="btn btn-dark"

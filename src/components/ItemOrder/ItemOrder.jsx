@@ -7,14 +7,14 @@ const ItemOrder = ({
   name, qty, price, _id, deleteProduct,
 }) => (
   <tr>
-    <td>{name}</td>
-    <td>{qty}</td>
+    <td data-testid="item-name">{name}</td>
+    <td data-testid="item-qty">{qty}</td>
     <td>
       S/.
       {price * qty}
     </td>
     <td>
-      <span id="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>
+      <span id="btn-deleted" className="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>
     </td>
   </tr>
 );
