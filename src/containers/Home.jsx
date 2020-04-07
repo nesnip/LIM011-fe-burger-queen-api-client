@@ -12,7 +12,7 @@ const Home = () => {
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
-  const updateProducts = () => getProducts(token).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
+  const updateProducts = () => getProducts((localStorage.getItem('token'))).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
     : setDataProducts(res)));
   useEffect(() => {
     updateProducts();

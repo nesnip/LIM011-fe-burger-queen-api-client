@@ -15,7 +15,6 @@ const OrderKitchen = () => {
   useEffect(() => {
     viewAllOrder();
   }, []);
-  console.log('alldata', AlldataOrder);
 
   return (
     <>
