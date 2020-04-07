@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ItemOrderProducts.css';
 import PropTypes from 'prop-types';
 import EditOrder from '../../controller/Orders/EditOrder';
+import DeleteOrder from '../../controller/Orders/DeleteOrder';
+import trash from '../../assets/images/garbage.svg';
 
 const ItemOrderProducts = ({
-  client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId,
+  client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId, viewAllOrder,
 }) => {
   const changeStatusOrder = (e) => {
     EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
-      .then((res) => console.log(res));
+      .then(() => viewAllOrder());
   };
+  const deleteOrder = () => {
+    DeleteOrder(localStorage.getItem('token'), _id).then((res) => console.log(res), viewAllOrder());
+  };
+  useEffect(() => {
+    viewAllOrder();
+  }, [status]);
   return (
     <>
+      <span id="btn-deleted-trash"><img id="trash-order" src={trash} alt="Eliminar" onClick={deleteOrder} /></span>
+
+      <p> Órden</p>
       <table className="egt" key={_id}>
         <thead />
         <tbody>
@@ -39,7 +50,10 @@ const ItemOrderProducts = ({
             <th>Estado</th>
             <td>
               <select id="status" value={status} onChange={changeStatusOrder}>
-                <option value={status}>{status}</option>
+                <option value={status}>
+                  {' '}
+                  {status}
+                </option>
                 <option value="delivering">Entregando</option>
                 <option value="canceled">Cancelado</option>
                 <option value="delivered">Entregado</option>

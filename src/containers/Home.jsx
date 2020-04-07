@@ -12,9 +12,8 @@ const Home = () => {
   const [client, setClient] = useState('');
   const token = localStorage.getItem('token');
 
-  const updateProducts = () => getProducts(localStorage.getItem('token')).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
+  const updateProducts = () => getProducts((localStorage.getItem('token'))).then((res) => (category !== '' ? setDataProducts(res.filter((obj) => obj.type === category))
     : setDataProducts(res)));
-
   useEffect(() => {
     updateProducts();
   }, [category]);
@@ -35,6 +34,7 @@ const Home = () => {
       arr.push(tempProduct);
       setDataOrder(arr);
     }
+    console.log(arr);
     updateProducts();
   };
 
@@ -62,6 +62,7 @@ const Home = () => {
   const handleName = (e) => {
     setClient(e.target.value);
   };
+
 
   return (
     <>
