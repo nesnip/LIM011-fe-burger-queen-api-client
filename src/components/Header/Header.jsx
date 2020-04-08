@@ -5,8 +5,7 @@ import burger from '../../assets/images/burger.png';
 
 const Header = () => (
   <ul className="nav-header">
-    <li>
-
+    <li className="title-li">
       <p className="title-header">
         <img src={burger} alt="logo" className="logo-header" />
         <span className="title-header initials-header">B</span>

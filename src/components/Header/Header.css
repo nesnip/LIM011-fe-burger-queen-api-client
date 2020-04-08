@@ -13,6 +13,9 @@
     overflow: hidden;
     border: 1px solid #e7e7e7;
     background-color: #0c0b0b;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   li {
@@ -50,9 +53,24 @@
   font-size: 25px;
   margin: 8px;
   color: #ffffff;
+  text-align: center;
 }
 
 .initials-header {
   color: #ff5757;
   margin: 0;
+}
+
+.title-li {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .nav-header {
+    justify-content: start;
+  }
+
+  .title-li {
+    width: auto;
+  }
 }
