@@ -22,7 +22,7 @@ const ItemOrderProducts = ({
     <>
       <span id="btn-deleted-trash"><img id="trash-order" src={trash} alt="Eliminar" onClick={deleteOrder} /></span>
 
-      <p> Órden</p>
+      <p className="item-title"> Órden</p>
       <table className="egt" key={_id}>
         <thead />
         <tbody>

@@ -10,6 +10,11 @@
 #trash-order{
     width: 25px;
   }
-  #btn-deleted-trash{
-    float: right;
-  }
+#btn-deleted-trash{
+  float: right;
+}
+
+.item-title {
+  font-family: 'Thundergood', cursive;
+  font-size: 30px;
+}
