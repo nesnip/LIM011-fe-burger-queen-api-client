@@ -4,7 +4,6 @@ import MenuKitchen from '../Menu/MenuKitchen';
 import ItemOrderProducts from '../ItemOrderProducts/ItemOrderProducts';
 import GetOrders from '../../controller/Orders/GetOrders';
 import Header from '../Header/Header';
-import Addorders from '../../controller/Orders/AddOrders';
 // import EditOrder from '../Orders/EditOrder';
 
 const OrderKitchen = () => {

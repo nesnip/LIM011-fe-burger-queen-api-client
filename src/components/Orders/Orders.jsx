@@ -41,6 +41,7 @@ const Orders = ({
               <th>
                 S/.
                 {totalPrice}
+                .00
               </th>
               <th>{' '}</th>
             </tr>

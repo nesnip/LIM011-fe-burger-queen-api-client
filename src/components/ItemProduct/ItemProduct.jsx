@@ -14,11 +14,12 @@ const ItemProduct = ({
         className="item-photo"
       />
       <div className="card-text">
-        <span className="card-name" data-testid="itemProduct">{name}</span>
-        <span data-testid="item-price">
+        <p className="card-name" data-testid="itemProduct">{name}</p>
+        <p className="card-price" data-testid="item-price">
           S/.
           {price}
-        </span>
+          .00
+        </p>
       </div>
       <div className="btn-group btn-container" role="group" aria-label="Basic example">
         <button

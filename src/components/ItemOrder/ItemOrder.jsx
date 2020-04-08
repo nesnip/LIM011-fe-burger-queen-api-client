@@ -12,6 +12,7 @@ const ItemOrder = ({
     <td>
       S/.
       {price * qty}
+      .00
     </td>
     <td>
       <span id="btn-deleted" className="btn-deleted"><img id="trash" src={trash} alt="Eliminar" onClick={() => deleteProduct(_id)} /></span>

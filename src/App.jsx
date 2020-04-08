@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginApp from './containers/LoginApp';
 import Home from './containers/Home';

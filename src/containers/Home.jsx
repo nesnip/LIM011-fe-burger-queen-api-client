@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
 import getProducts from '../controller/products';
 import AddOrders from '../controller/Orders/AddOrders';
+import styles from '../styles.module.css';
 
 const Home = () => {
   const [dataProducts, setDataProducts] = useState([]);
@@ -65,7 +66,7 @@ const Home = () => {
 
 
   return (
-    <>
+    <div className={styles.flex}>
       <Header />
       <Menu
         handleClick={handleClick}
@@ -78,7 +79,7 @@ const Home = () => {
         sendOrder={sendOrder}
         handleName={handleName}
       />
-    </>
+    </div>
   );
 };
 
