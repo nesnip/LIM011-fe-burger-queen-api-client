@@ -12,7 +12,7 @@ function App() {
         <Switch>
           <Route path="/Home" component={Home} />
           <Route path="/OrdersKitchen" component={OrdersKitchen} />
-          <Route exact path="/" component={LoginApp} />
+          <Route exact path="/LIM011-fe-burger-queen-api-client" component={LoginApp} />
         </Switch>
       </>
     </BrowserRouter>
