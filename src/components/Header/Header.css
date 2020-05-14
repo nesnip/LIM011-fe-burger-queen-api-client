@@ -1,0 +1,76 @@
+*{
+    font-family: Roboto, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+  }
+  .nav-header {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #0c0b0b;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  li {
+    float: left;
+  }
+  
+ .nav-header .li-header {
+    display: block;
+    color: rgb(248, 244, 244);
+    text-align: center;
+    text-decoration: none;
+    padding: 28px 20px;
+  }
+  
+  .nav-header .li-header:hover {
+    background-color: rgb(58, 56, 56);
+  }
+  .li-header:link, .li-header:visited, .li-header:active {
+    text-decoration:none;
+}
+
+.logo-header {
+  width: 50px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+@font-face {
+  font-family: 'Thundergood';
+  src: local('Thundergood'), url(../../assets/fonts/Thundergood.ttf) format('truetype');
+}
+
+.title-header {
+  font-family: 'Thundergood', cursive;
+  font-size: 25px;
+  margin: 8px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.initials-header {
+  color: #ff5757;
+  margin: 0;
+}
+
+.title-li {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .nav-header {
+    justify-content: start;
+  }
+
+  .title-li {
+    width: auto;
+  }
+}

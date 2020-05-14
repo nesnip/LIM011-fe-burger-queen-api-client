@@ -1,0 +1,20 @@
+.row-product {
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+.select{
+    display: flex;
+    justify-content: center;
+}
+#trash-order{
+    width: 25px;
+  }
+#btn-deleted-trash{
+  float: right;
+}
+
+.item-title {
+  font-family: 'Thundergood', cursive;
+  font-size: 30px;
+}
