@@ -29,14 +29,17 @@ const Home = () => {
       console.log(error);
     } if (loading) {
       console.log(loading);
-    } if (value) {
+    } else {
       console.log(value);
-      setDataProducts(value.docs);
+      const result = category === '' ? setDataProducts(value.docs) : setDataProducts(value.docs.filter((obj) => obj.data().type === category));
+      console.log(result);
+      return result;
+      // setDataProducts(value.docs);
     }
   };
   useEffect(() => {
     updateProducts();
-  }, [value]);
+  }, [category, value]);
 
   const handleClick = (type) => {
     setCategory(type);
