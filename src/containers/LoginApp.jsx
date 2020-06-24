@@ -24,19 +24,16 @@ const LoginApp = () => {
         history.push('/Home');
       }
     }); */
-    if (user) {
-      logIn(email, password)
-        .then((res) => {
-          console.log(res);
-          history.push('/Home');
-        })
-        .catch((err) => {
-          const errorMessage = err.message;
-          alert(errorMessage);
-        });
-    } else {
-      console.log('holi');
-    }
+
+    logIn(email, password)
+      .then((res) => {
+        console.log(res);
+        history.push('/Home');
+      })
+      .catch((err) => {
+        const errorMessage = err.message;
+        alert(errorMessage);
+      });
   };
 
   const handleEmail = (e) => {
