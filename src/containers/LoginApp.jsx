@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import LoginForm from '../components/LoginForm/LoginForm';
 import token from '../controller/token';
+import firebase from '../firebase/config';
+import { logIn } from '../firebase/auth';
 // import postOrder from './AddOrder';
 
 const LoginApp = () => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, loading, error] = useAuthState(firebase.auth());
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    token(email, password).then((res) => {
+    /* token(email, password).then((res) => {
       if (res.token === undefined) {
         console.log('Email y contraseña incorrecto');
       } else {
@@ -19,7 +23,20 @@ const LoginApp = () => {
         console.log(`este es el token: ${localStorage.getItem('token')}`);
         history.push('/Home');
       }
-    });
+    }); */
+    if (user) {
+      logIn(email, password)
+        .then((res) => {
+          console.log(res);
+          history.push('/Home');
+        })
+        .catch((err) => {
+          const errorMessage = err.message;
+          alert(errorMessage);
+        });
+    } else {
+      console.log('holi');
+    }
   };
 
   const handleEmail = (e) => {

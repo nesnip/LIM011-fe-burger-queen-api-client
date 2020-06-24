@@ -14,17 +14,20 @@ const Menu = ({
       <li><a href="#drinks" id="bebida" onClick={() => handleClick('bebida')}>Bebidas</a></li>
     </ul>
     <div className="container-card">
-      {dataProducts.map((objProduct) => (
-        <ItemProduct
-          key={objProduct._id}
-          id={objProduct._id}
-          image={objProduct.image}
-          name={objProduct.name}
-          price={objProduct.price}
-          objProduct={objProduct}
-          addProduct={addProduct}
-        />
-      ))}
+      {dataProducts.map((objProduct) => {
+        // console.log(objProduct.data());
+        return (
+          <ItemProduct
+            key={objProduct.data()._id}
+            id={objProduct.data()._id}
+            image={objProduct.data().image}
+            name={objProduct.data().name}
+            price={objProduct.data().price}
+            objProduct={objProduct.data()}
+            addProduct={addProduct}
+          />
+        );
+      })}
     </div>
   </>
 );
