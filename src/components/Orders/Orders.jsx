@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ItemOrder from '../ItemOrder/ItemOrder';
 
 const Orders = ({
-  dataOrder, deleteProduct, sendOrder, handleName,
+  dataOrder, deleteProduct, sendOrder, handleName, client,
 }) => {
   let totalPrice = 0;
   dataOrder.forEach((el) => {
@@ -14,7 +14,7 @@ const Orders = ({
     <div className="container-order">
       <div className="order-body">
         <h4>Nueva Orden</h4>
-        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente" onChange={handleName} />
+        <input type="text" className="txt-form" id="name-client" placeholder="Ingrese nombre del cliente" value={client} onChange={handleName} />
         <table className="egt">
           <thead>
             <tr>

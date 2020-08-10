@@ -6,6 +6,7 @@ import Header from '../components/Header/Header';
 import Orders from '../components/Orders/Orders';
 import getProducts from '../controller/products';
 import AddOrders from '../controller/Orders/AddOrders';
+import { addOrder } from '../firebase/addOrder';
 import styles from '../styles.module.css';
 
 const Home = () => {
@@ -78,11 +79,17 @@ const Home = () => {
     if (!client) {
       alert('Ingrese nombre del cliente');
     } else {
-      AddOrders(token,
+      console.log(dataOrder);
+      addOrder(userId, client, dataOrder).then((res) => {
+        console.log(res);
+        setClient('');
+        setDataOrder([]);
+      });
+      /* AddOrders(token,
         userId,
         client,
         dataOrder.map((objOrder) => ({ productId: objOrder._id, qty: objOrder.qty })))
-        .then(() => setClient(''), setDataOrder([]));
+        .then(() => setClient(''), setDataOrder([])); */
     }
   };
   const handleName = (e) => {
@@ -103,6 +110,7 @@ const Home = () => {
         deleteProduct={deleteProduct}
         sendOrder={sendOrder}
         handleName={handleName}
+        client={client}
       />
     </div>
   );
