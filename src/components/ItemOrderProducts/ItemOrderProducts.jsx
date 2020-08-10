@@ -1,26 +1,22 @@
 import React, { useEffect } from 'react';
 import './ItemOrderProducts.css';
 import PropTypes from 'prop-types';
-import EditOrder from '../../controller/Orders/EditOrder';
-import DeleteOrder from '../../controller/Orders/DeleteOrder';
 import editOrder from '../../firebase/editOrder';
+import deleteOrderItem from '../../firebase/deleteOrder';
 import trash from '../../assets/images/garbage.svg';
 
 const ItemOrderProducts = ({
-  client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId, viewAllOrder,
+  client, ArrayProduct, dateEntry, status, dateProcessed, _id, viewAllOrder,
 }) => {
-  /* const changeStatusOrder = (e) => {
-    EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
-      .then(() => viewAllOrder());
-  }; */
   const changeStatusOrder = (e) => {
     console.log(e.target.value);
     editOrder(_id, e.target.value);
-    // viewAllOrder();
   };
+
   const deleteOrder = () => {
-    DeleteOrder(localStorage.getItem('token'), _id).then((res) => console.log(res), viewAllOrder());
+    deleteOrderItem(_id);
   };
+
   useEffect(() => {
     viewAllOrder();
   }, [status]);
@@ -85,9 +81,8 @@ const ItemOrderProducts = ({
 ItemOrderProducts.propTypes = {
   ArrayProduct: PropTypes.arrayOf(PropTypes.object).isRequired,
   _id: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
-  // dateEntry: PropTypes.string.isRequired,
+  dateEntry: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   dateProcessed: PropTypes.string.isRequired,
 };

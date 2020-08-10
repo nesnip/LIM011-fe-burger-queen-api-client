@@ -4,9 +4,7 @@ import firebase from '../../firebase/config';
 import './OrderKitchen.css';
 import MenuKitchen from '../Menu/MenuKitchen';
 import ItemOrderProducts from '../ItemOrderProducts/ItemOrderProducts';
-import GetOrders from '../../controller/Orders/GetOrders';
 import Header from '../Header/Header';
-// import EditOrder from '../Orders/EditOrder';
 
 const OrderKitchen = () => {
   const [AlldataOrder, setAllDataOrder] = useState([]);
@@ -18,10 +16,6 @@ const OrderKitchen = () => {
     },
   );
 
-  /* const viewAllOrder = () => {
-    GetOrders(localStorage.getItem('token')).then((NewDataOrders) => (category !== '' ? setAllDataOrder(NewDataOrders.filter((obj) => obj.status === category))
-      : setAllDataOrder(NewDataOrders)));
-  }; */
   const viewAllOrder = () => {
     if (error) {
       console.log(error);
@@ -31,9 +25,9 @@ const OrderKitchen = () => {
       const result = category === '' ? setAllDataOrder(value.docs)
         : setAllDataOrder(value.docs.filter((obj) => obj.data().status === category));
       return result;
-      // setDataProducts(value.docs);
     }
   };
+
   useEffect(() => {
     viewAllOrder();
   }, [category, value]);
@@ -45,9 +39,6 @@ const OrderKitchen = () => {
       setCategory(type);
     }
   };
-
-  // console.log(AlldataOrder);
-  // AlldataOrder.forEach((obj) => console.log(obj.data().dateEntry));
 
   return (
     <>
