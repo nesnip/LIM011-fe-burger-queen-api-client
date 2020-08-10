@@ -3,14 +3,20 @@ import './ItemOrderProducts.css';
 import PropTypes from 'prop-types';
 import EditOrder from '../../controller/Orders/EditOrder';
 import DeleteOrder from '../../controller/Orders/DeleteOrder';
+import editOrder from '../../firebase/editOrder';
 import trash from '../../assets/images/garbage.svg';
 
 const ItemOrderProducts = ({
   client, ArrayProduct, dateEntry, status, dateProcessed, _id, userId, viewAllOrder,
 }) => {
-  const changeStatusOrder = (e) => {
+  /* const changeStatusOrder = (e) => {
     EditOrder(client, ArrayProduct, localStorage.getItem('token'), userId, e.target.value, _id, dateEntry)
       .then(() => viewAllOrder());
+  }; */
+  const changeStatusOrder = (e) => {
+    console.log(e.target.value);
+    editOrder(_id, e.target.value);
+    // viewAllOrder();
   };
   const deleteOrder = () => {
     DeleteOrder(localStorage.getItem('token'), _id).then((res) => console.log(res), viewAllOrder());
@@ -37,12 +43,12 @@ const ItemOrderProducts = ({
           <tr>
             <td>
               {ArrayProduct.map((objProduct) => (
-                <div className="row-product" key={objProduct.product._id}>{objProduct.product.name}</div>
+                <div className="row-product" key={objProduct._id}>{objProduct.name}</div>
               ))}
             </td>
             <td>
               {ArrayProduct.map((objProduct) => (
-                <div className="row-product" key={objProduct.product._id}>{objProduct.qty}</div>
+                <div className="row-product" key={objProduct._id}>{objProduct.qty}</div>
               ))}
             </td>
           </tr>
@@ -81,7 +87,7 @@ ItemOrderProducts.propTypes = {
   _id: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
   client: PropTypes.string.isRequired,
-  dateEntry: PropTypes.string.isRequired,
+  // dateEntry: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   dateProcessed: PropTypes.string.isRequired,
 };
